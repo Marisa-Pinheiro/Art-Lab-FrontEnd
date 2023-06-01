@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
 import { useContext } from "react";
-/* import { AuthContext } from "../../Context/auth.context"; */
+import { AuthContext } from "../../Context/auth.context";
 
 function NavBar() {
-  /* const { isLoggedIn, user, logOutUser } = useContext(AuthContext); */
+  const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
 
   return (
     <nav className="navbar">
       <div>
         <Link to="/">
           <button>Home</button>
+        </Link>
+        <Link to="/illustrations">
+          <button>Illustrations</button>
         </Link>
       </div>
 

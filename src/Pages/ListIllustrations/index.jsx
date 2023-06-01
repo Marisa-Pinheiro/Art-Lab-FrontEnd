@@ -12,7 +12,7 @@ function IllustrationList() {
   const getAllIllustrations = () => {
     //Route created in backend and tested in Postman
     axios
-      .get(`${apiURL}/api/projects`)
+      .get(`${apiURL}/api/illustrations`)
       .then((response) => setIllustrations(response.data))
       .catch((error) => console.log(error));
   };
@@ -26,6 +26,7 @@ function IllustrationList() {
   return (
     <div className="project-list-page">
         <AddIllustration refreshIllustration={getAllIllustrations}/>
+        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fcomputer-illustration&psig=AOvVaw29nZZnG9m1Mc6DYZpr3-hE&ust=1685698853180000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCIj0vNzjof8CFQAAAAAdAAAAABAE"/>
       {illustrations.map((illustration) => {
         return (
             //careful with this id part

@@ -10,7 +10,7 @@ function IllustrationDetails() {
 
   const getIllustration = () => {
     axios
-      .get(`${apiURL}/api/projects/${illustrationtId}`)
+      .get(`${apiURL}/api/illustrations/${illustrationtId}`)
       .then((response) => {
         const oneIllustration = response.data;
         setIllustration(oneIllustration);

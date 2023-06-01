@@ -5,11 +5,11 @@ import { Routes, Route } from "react-router-dom";
 import NavBar from "./Components/NavBar/index";
 import HomePage from "./Pages/Home/index";
 import IllustrationList from "./Pages/ListIllustrations/index";
-import ProjectDetails from "./Pages/ProjectDetailsPage/index";
-import AddIllustration from "./Pages/AddIllustration/index";
+import IllustrationDetails from "./Pages/ArtworkDetails/index";
+/* import AddIllustration from "./Pages/AddIllustration/index"; */
 import SignUpPage from "./Pages/SignUp/index";
 import LogInPage from "./Pages/Login/index";
-import IsPrivate from "./Components/IsPrivate";
+/* import IsPrivate from "./Components/IsPrivate"; */
 
 //IsAnon pages that can beaccessed by an anonymous user
 //acts like a public page
@@ -22,29 +22,29 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
-          path="/projects"
+          path="/illustrations"
           element={
-            <IsPrivate>
-              <ProjectsListPage />
-            </IsPrivate>
+            <IsAnon>
+              <IllustrationList />
+            </IsAnon>
           }
         />
         <Route
-          path="/projects/:projectId"
+          path="/illustrations/:illustrationtId"
           element={
-            <IsPrivate>
-              <ProjectDetails />
-            </IsPrivate>
+            <IsAnon>
+              <IllustrationDetails />
+            </IsAnon>
           }
         />
-        <Route
-          path="/projects/edit/:projectId"
+{/*         <Route
+          path="/illustrations/edit/:illustrationtId"
           element={
-            <IsPrivate>
+            <IsAnon>
               <EditProjectPage />{" "}
-            </IsPrivate>
+            </IsAnon>
           }
-        />
+        /> */}
         <Route
           path="/signup"
           element={
