@@ -7,20 +7,20 @@ function NavBar() {
 
   return (
     <nav className="navbar">
-      <div>
+      <div className="nav-link">
         <Link to="/">
-          <button>Home</button>
+          Home
         </Link>
         <Link to="/illustrations">
-          <button>Illustrations</button>
+          Illustrations
         </Link>
       </div>
 
       <Link to="/signup">
-        <button>Signup</button>
+        <button className="signup">Signup</button>
       </Link>
       <Link to="/login">
-        <button>Login</button>
+        <button className="loging">Login</button>
       </Link>
     </nav>
   );

@@ -1,13 +1,22 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import profileImg from "../images/profile-img.jpg";
+/* import profileImg from "../images/profile-img.jpg"; */
+import AddIllustration from "../AddIllustration/index"
 
 function Profile() {
   const [buyer, setBuyer] = useState(false);
   const [artist, setArtist] = useState(false);
   const [user, setUser] = useState(null);
   const { id } = useParams();
+
+  const getAllIllustrations = () => {
+    //Route created in backend and tested in Postman
+    axios
+      .get(`${apiURL}/api/illustrations`)
+      .then((response) => setIllustrations(response.data))
+      .catch((error) => console.log(error));
+  };
 
   const getUser = async () => {
     try {
@@ -81,7 +90,7 @@ function Profile() {
             <div>
               <div>
                 <h2>
-                  <Illustrations></Illustrations>
+                  Illustrations
                 </h2>
                 {user.artistIllustrations.map((art) => (
                   <li key={art._id}>
@@ -96,6 +105,7 @@ function Profile() {
                   </li>
                 ))}
               </div>
+              <AddIllustration refreshIllustration={getAllIllustrations}/>
             </div>
           </div>
         </>

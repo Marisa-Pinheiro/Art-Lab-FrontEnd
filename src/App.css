@@ -4,15 +4,59 @@
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.body {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
 }
 
 .navbar {
-  border: 2px solid black;
-  width: 100%;
+  position: absolute;
+  width: 98%;
+  height: 70px;
+  left: 0px;
+  top: 0px;
+  padding: 2%;
+  
+}
+
+.loging {
+  position: absolute;
+  width: 70px;
+  height: 34px;
+  left: 960px;
+  top: 39px;
+  border-radius: 15px;
+  border-style: none;
+  
+}
+
+.signup {
+  position: absolute;
+  width: 70px;
+  height: 34px;
+  left: 880px;
+  top: 39px;
+  border-radius: 15px;
+  border-style: none;
+  
+}
+
+.nav-link {
+  position: absolute;
+  width: 217px;
+  height: 19px;
+  left: 700px;
+  top: 49px;
   display: flex;
-  flex-direction: row;
-  position: sticky;
-  top: 0;
-  padding: 1%;
-  margin: 0;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: black;
+  margin-right: 5%;
+  
 }

@@ -1,7 +1,7 @@
 import axios from "axios"; //LOOK HERE
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import AddIllustration from "../AddIllustration/index"
+
 
 const apiURL = "http://localhost:5005";//LOOK HERE
 
@@ -25,7 +25,6 @@ function IllustrationList() {
 
   return (
     <div className="project-list-page">
-        <AddIllustration refreshIllustration={getAllIllustrations}/>
         <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fcomputer-illustration&psig=AOvVaw29nZZnG9m1Mc6DYZpr3-hE&ust=1685698853180000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCIj0vNzjof8CFQAAAAAdAAAAABAE"/>
       {illustrations.map((illustration) => {
         return (

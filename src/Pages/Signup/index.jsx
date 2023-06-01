@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import axios from "axios";
+
+import authService from "../../Services/auth.service";
 
 function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
@@ -13,23 +16,23 @@ function SignUpPage() {
   //Handle change of inputs
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
-  const handleName = (e) => setName(e.target.value);
+  const handleUsername = (e) => setUsername(e.target.value);
 
   //Handle the submission of the form
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { name, email, password };
+    const requestBody = { username, email, password };
 
-    authService.signup(requestBody)
-        .then(()=>{
-            navigate("/login");
-        })
-        .catch((error)=>{
-            const errorDescription = error.response.data.message;
-            setErrorMessage(errorDescription);
-        })
-
+    authService
+      .signup(requestBody)
+      .then(() => {
+        navigate("/login");
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+      });
   };
 
   return (
@@ -38,7 +41,13 @@ function SignUpPage() {
 
       <form onSubmit={handleSignupSubmit}>
         <div>
+          <label>Username:</label>
+          <br></br>
+          <input type="text" name="name" value={username} onChange={handleUsername} />
+        </div>
+        <div>
           <label>Email:</label>
+          <br></br>
           <input
             type="email"
             name="email"
@@ -48,6 +57,7 @@ function SignUpPage() {
         </div>
         <div>
           <label>Password:</label>
+          <br></br>
           <input
             type="password"
             name="password"
@@ -55,10 +65,8 @@ function SignUpPage() {
             onChange={handlePassword}
           />
         </div>
-        <div>
-          <label>Name:</label>
-          <input type="text" name="name" value={name} onChange={handleName} />
-        </div>
+
+        <br></br>
         <div>
           <button type="submit">Sign Up</button>
         </div>
