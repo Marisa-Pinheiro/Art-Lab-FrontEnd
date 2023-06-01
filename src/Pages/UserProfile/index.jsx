@@ -23,7 +23,7 @@ function Profile() {
       const storedToken = localStorage.getItem("authToken");
 
       let response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/profile/${id}`,
+        `${process.env.REACT_APP_API_URL}/user-profile/${id}`,
         {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
@@ -51,8 +51,8 @@ function Profile() {
       {buyer && (
         <>
           <header>
-            <img src={profileImg} alt="profile-pic" className="profile-image" />
-            <h1 className="location">Hello, {user.name}</h1>
+            {/* <img src={profileImg} alt="profile-pic" className="profile-image" /> */}
+            <h1 className="location">Hello, {user.username}</h1>
             <p>Logged in with: {user.email}</p>
 
             <Link className="tag" to={`/profile/${user._id}/edit`}>

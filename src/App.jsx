@@ -9,6 +9,7 @@ import IllustrationDetails from "./Pages/ArtworkDetails/index";
 /* import AddIllustration from "./Pages/AddIllustration/index"; */
 import SignUpPage from "./Pages/SignUp/index";
 import LogInPage from "./Pages/Login/index";
+import Profile from "./Pages/UserProfile";
 /* import IsPrivate from "./Components/IsPrivate"; */
 
 //IsAnon pages that can beaccessed by an anonymous user
@@ -20,25 +21,25 @@ function App() {
     <div className="App">
       <NavBar />
       <div className="body">
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route
-          path="/illustrations"
-          element={
-            <IsAnon>
-              <IllustrationList />
-            </IsAnon>
-          }
-        />
-        <Route
-          path="/illustrations/:illustrationtId"
-          element={
-            <IsAnon>
-              <IllustrationDetails />
-            </IsAnon>
-          }
-        />
-{/*         <Route
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route
+            path="/illustrations"
+            element={
+              <IsAnon>
+                <IllustrationList />
+              </IsAnon>
+            }
+          />
+          <Route
+            path="/illustrations/:illustrationtId"
+            element={
+              <IsAnon>
+                <IllustrationDetails />
+              </IsAnon>
+            }
+          />
+          {/*         <Route
           path="/illustrations/edit/:illustrationtId"
           element={
             <IsAnon>
@@ -46,23 +47,31 @@ function App() {
             </IsAnon>
           }
         /> */}
-        <Route
-          path="/signup"
-          element={
-            <IsAnon>
-              <SignUpPage />
-            </IsAnon>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <IsAnon>
-              <LogInPage />
-            </IsAnon>
-          }
-        />
-      </Routes>
+          <Route
+            path="/signup"
+            element={
+              <IsAnon>
+                <SignUpPage />
+              </IsAnon>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <IsAnon>
+                <LogInPage />
+              </IsAnon>
+            }
+          />
+          <Route
+            path="/user-profile/:userId"
+            element={
+              <IsAnon>
+                <Profile />
+              </IsAnon>
+            }
+          />
+        </Routes>
       </div>
     </div>
   );

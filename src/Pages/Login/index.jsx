@@ -29,7 +29,7 @@ function LogInPage() {
 
         //authenticate user
         authenticateUser();
-        navigate("/");
+        navigate(`/`);
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
