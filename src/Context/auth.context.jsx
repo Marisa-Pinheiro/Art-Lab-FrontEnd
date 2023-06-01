@@ -27,7 +27,7 @@ function AuthProviderWrapper(props) {
           //Update state variables
           setIsLoggedIn(true);
           setIsLoading(false);
-          setUser(response.data.user);
+          setUser(response.data);
         })
         .catch(() => {
           setIsLoggedIn(false);
@@ -57,19 +57,20 @@ function AuthProviderWrapper(props) {
     authenticateUser();
   }, []);
 
-  return(
-  <AuthContext.Provider
-    value={{
-      isLoggedIn,
-      isLoading,
-      user,
-      storeToken,
-      authenticateUser,
-      logOutUser,
-    }}
-  >
-    {props.children}
-  </AuthContext.Provider>);
+  return (
+    <AuthContext.Provider
+      value={{
+        isLoggedIn,
+        isLoading,
+        user,
+        storeToken,
+        authenticateUser,
+        logOutUser,
+      }}
+    >
+      {props.children}
+    </AuthContext.Provider>
+  );
 }
 
 export { AuthProviderWrapper, AuthContext };

@@ -10,6 +10,7 @@ function SignUpPage() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const [userType, setUserType] = useState("");
 
   const navigate = useNavigate();
 
@@ -34,7 +35,10 @@ function SignUpPage() {
         setErrorMessage(errorDescription);
       });
   };
-
+  const handleUserType = (e) => {
+    console.log(userType);
+    setUserType(e.target.value);
+  };
   return (
     <div className="signup-page">
       <h1>Sign Up</h1>
@@ -43,7 +47,12 @@ function SignUpPage() {
         <div>
           <label>Username:</label>
           <br></br>
-          <input type="text" name="name" value={username} onChange={handleUsername} />
+          <input
+            type="text"
+            name="name"
+            value={username}
+            onChange={handleUsername}
+          />
         </div>
         <div>
           <label>Email:</label>
@@ -67,6 +76,33 @@ function SignUpPage() {
         </div>
 
         <br></br>
+        <fieldset className="fieldset">
+          <div>
+            <label htmlFor="userType">User Type*</label>
+          </div>
+
+          <div>
+            <input
+              type="radio"
+              className="css-authinput"
+              label="Artist"
+              value="Artist"
+              name="userType"
+              onClick={handleUserType}
+            />
+            <label htmlFor="donor">Artist</label>
+
+            <input
+              type="radio"
+              className="css-authinput"
+              label="Buyer"
+              value="Buyerl"
+              name="userType"
+              onClick={handleUserType}
+            />
+            <label htmlFor="needful">Buyer</label>
+          </div>
+        </fieldset>
         <div>
           <button type="submit">Sign Up</button>
         </div>

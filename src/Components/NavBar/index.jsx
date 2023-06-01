@@ -18,9 +18,11 @@ function NavBar() {
           <button className="loging" onClick={logOutUser}>
             Logout
           </button>
-          <Link to={`/user-profile/${user && user._id}`} className="nav_link">
-            User
-          </Link>
+          {user && (
+            <Link to={`/user-profile/${user._id}`} className="nav_link">
+              User
+            </Link>
+          )}
         </div>
       ) : (
         <div>

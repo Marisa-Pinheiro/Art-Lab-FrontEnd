@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 /* import profileImg from "../images/profile-img.jpg"; */
-import AddIllustration from "../AddIllustration/index"
+import AddIllustration from "../AddIllustration/index";
 
 function Profile() {
   const [buyer, setBuyer] = useState(false);
   const [artist, setArtist] = useState(false);
   const [user, setUser] = useState(null);
-  const { id } = useParams();
+  const { userId } = useParams();
 
   const getAllIllustrations = () => {
     //Route created in backend and tested in Postman
     axios
-      .get(`${apiURL}/api/illustrations`)
+      .get(`${apiURL}/illustrations`)
       .then((response) => setIllustrations(response.data))
       .catch((error) => console.log(error));
   };
@@ -23,7 +23,7 @@ function Profile() {
       const storedToken = localStorage.getItem("authToken");
 
       let response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/user-profile/${id}`,
+        `${process.env.VITE_APP_SERVER_URL}/api/user-profile/${userId}`,
         {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
@@ -44,7 +44,7 @@ function Profile() {
 
   useEffect(() => {
     getUser();
-  }, [id]);
+  }, [userId]);
 
   return (
     <div className="profilePage">
@@ -89,9 +89,7 @@ function Profile() {
           <div>
             <div>
               <div>
-                <h2>
-                  Illustrations
-                </h2>
+                <h2>Illustrations</h2>
                 {user.artistIllustrations.map((art) => (
                   <li key={art._id}>
                     <div>{art.image}</div>
@@ -105,7 +103,7 @@ function Profile() {
                   </li>
                 ))}
               </div>
-              <AddIllustration refreshIllustration={getAllIllustrations}/>
+              <AddIllustration refreshIllustration={getAllIllustrations} />
             </div>
           </div>
         </>

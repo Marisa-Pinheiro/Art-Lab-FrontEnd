@@ -9,7 +9,7 @@ import IllustrationDetails from "./Pages/ArtworkDetails/index";
 /* import AddIllustration from "./Pages/AddIllustration/index"; */
 import SignUpPage from "./Pages/SignUp/index";
 import LogInPage from "./Pages/Login/index";
-import Profile from "./Pages/UserProfile";
+import Profile from "./Pages/UserProfile/index";
 /* import IsPrivate from "./Components/IsPrivate"; */
 
 //IsAnon pages that can beaccessed by an anonymous user
@@ -24,7 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
-            path="/illustrations"
+            path="api/illustrations"
             element={
               <IsAnon>
                 <IllustrationList />
@@ -32,7 +32,7 @@ function App() {
             }
           />
           <Route
-            path="/illustrations/:illustrationtId"
+            path="api/illustrations/:illustrationtId"
             element={
               <IsAnon>
                 <IllustrationDetails />
