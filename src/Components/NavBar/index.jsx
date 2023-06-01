@@ -8,14 +8,23 @@ function NavBar() {
 
   return (
     <nav className="navbar">
+      <div className="app-logo">
+        <Link to="/">
+          <img src="../../public/Images/LogoArtLab.png" alt="logo" />
+        </Link>
+      </div>
       <div className="nav-link">
-        <Link to="/">Home</Link>
-        <Link to="/illustrations">Illustrations</Link>
+        <Link to="/" className="home-link">
+          Home
+        </Link>
+        <Link to="/illustrations" className="illustration-link">
+          Illustrations
+        </Link>
       </div>
 
       {isLoggedIn ? (
-        <div>
-          <button className="loging" onClick={logOutUser}>
+        <div className="loggedIn">
+          <button className="logout" onClick={logOutUser}>
             Logout
           </button>
           {user && (
@@ -25,7 +34,7 @@ function NavBar() {
           )}
         </div>
       ) : (
-        <div>
+        <div className="loggedOut">
           <Link to="/signup">
             <button className="signup">Signup</button>
           </Link>

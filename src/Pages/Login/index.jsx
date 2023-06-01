@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/auth.context";
-import authService from "../../Services/auth.service";
+import authService from "../../../Services/auth.service";
 
 function LogInPage() {
   const [email, setEmail] = useState("");
@@ -43,16 +43,18 @@ function LogInPage() {
 
       <form onSubmit={handleLoginSubmit}>
         <label>Email:</label>
+        <br></br>
         <input type="email" name="email" value={email} onChange={handleEmail} />
-
+        <br></br>
         <label>Password:</label>
+        <br></br>
         <input
           type="password"
           name="password"
           value={password}
           onChange={handlePassword}
         />
-
+        <br></br>
         <button type="submit">Login</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
