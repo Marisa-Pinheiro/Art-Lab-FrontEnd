@@ -28,7 +28,7 @@ function NavBar() {
             Logout
           </button>
           {user && (
-            <Link to='/user-profile' className="nav_link">
+            <Link to={`/user-profile/${user._id}`} className="nav_link">
               User
             </Link>
           )}

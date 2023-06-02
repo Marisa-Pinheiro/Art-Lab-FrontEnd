@@ -26,7 +26,6 @@ function LogInPage() {
       .login(requestBody)
       .then((response) => {
         storeToken(response.data.authToken);
-
         //authenticate user
         authenticateUser();
         navigate(`/`);

@@ -23,14 +23,7 @@ function App() {
       <div className="body">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route
-            path="/illustrations"
-            element={
-              <IsAnon>
-                <IllustrationList />
-              </IsAnon>
-            }
-          />
+          <Route path="/illustrations" element={<IllustrationList />} />
           <Route
             path="/illustrations/:id"
             element={
@@ -63,14 +56,7 @@ function App() {
               </IsAnon>
             }
           />
-          <Route
-            path="/user-profile"
-            element={
-              <IsAnon>
-                <Profile />
-              </IsAnon>
-            }
-          />
+          <Route path="/user-profile/:id" element={<Profile />} />
         </Routes>
       </div>
     </div>
