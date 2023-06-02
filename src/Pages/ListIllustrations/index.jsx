@@ -25,7 +25,7 @@ function IllustrationList() {
 
   return (
     <div className="illustrations-list-page">
-      <p>There are no movies yet!</p>
+      <p>There are no illustrations yet!</p>
       {illustrations.map((illustration) => {
         return (
             //careful with this id part
