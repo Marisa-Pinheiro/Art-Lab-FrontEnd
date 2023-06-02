@@ -4,6 +4,17 @@ import { Link, useParams } from "react-router-dom";
 /* import profileImg from "../images/profile-img.jpg"; */
 import AddIllustration from "../AddIllustration/index";
 
+
+
+function Profile() {
+  return (
+    <div><h1>Profile</h1></div>
+  )
+}
+
+
+
+/*  
 function Profile() {
   const [buyer, setBuyer] = useState(false);
   const [artist, setArtist] = useState(false);
@@ -23,7 +34,7 @@ function Profile() {
       const storedToken = localStorage.getItem("authToken");
 
       let response = await axios.get(
-        `${process.env.VITE_APP_SERVER_URL}/api/user-profile/${userId}`,
+        `${process.env.VITE_APP_SERVER_URL}/api/user-profile/${id}`,
         {
           headers: { Authorization: `Bearer ${storedToken}` },
         }
@@ -51,11 +62,11 @@ function Profile() {
       {buyer && (
         <>
           <header>
-            {/* <img src={profileImg} alt="profile-pic" className="profile-image" /> */}
-            <h1 className="location">Hello, {user.username}</h1>
+            {/* <img src={profileImg} alt="profile-pic" className="profile-image" /> }*/
+            /*<h1 className="location">Hello, {user.username}</h1>
             <p>Logged in with: {user.email}</p>
 
-            <Link className="tag" to={`/profile/${user._id}/edit`}>
+            <Link className="tag" to={`/user-profile/${user._id}/edit`}>
               Edit Account
             </Link>
           </header>
@@ -84,8 +95,8 @@ function Profile() {
           <header>
             <img src={profileImg} alt="profile-pic" />
             <h1>{user.name} Art</h1>
-            {/* How to edit a profile to edit the artist view for other users? */}
-          </header>
+            {/* How to edit a profile to edit the artist view for other users?} */
+          /*</header>
           <div>
             <div>
               <div>
@@ -111,5 +122,6 @@ function Profile() {
     </div>
   );
 }
+*/
 
 export default Profile;

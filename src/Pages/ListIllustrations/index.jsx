@@ -24,8 +24,8 @@ function IllustrationList() {
   }, []);
 
   return (
-    <div className="project-list-page">
-        <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fcomputer-illustration&psig=AOvVaw29nZZnG9m1Mc6DYZpr3-hE&ust=1685698853180000&source=images&cd=vfe&ved=0CBEQjRxqFwoTCIj0vNzjof8CFQAAAAAdAAAAABAE"/>
+    <div className="illustrations-list-page">
+      <p>There are no movies yet!</p>
       {illustrations.map((illustration) => {
         return (
             //careful with this id part

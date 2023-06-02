@@ -16,8 +16,8 @@ function AddIllustration(props) {
     const requestBody = { name: name, price: price, date: date };
 
     axios
-      .post(`${apiURL}/api/projects`, requestBody)
-      .then((response) => {
+      .post(`${apiURL}/api/illustrations`, requestBody)
+      .then(() => {
         setName("");
         setPrice(0);
         setDate([]);
@@ -27,7 +27,7 @@ function AddIllustration(props) {
   };
 
   return (
-    <div className="add-project">
+    <div className="add-illustration">
       <h3>Add Artwork</h3>
 
       <form onSubmit={handleSubmit}>
@@ -54,6 +54,7 @@ function AddIllustration(props) {
           value={date}
           onChange={(e) => setPrice(e.target.value)}
         />
+        <input type="file" name="illustration-image" />
 
         <button type="submit">Submit</button>
       </form>

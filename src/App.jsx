@@ -6,14 +6,14 @@ import NavBar from "./Components/NavBar/index";
 import HomePage from "./Pages/Home/index";
 import IllustrationList from "./Pages/ListIllustrations/index";
 import IllustrationDetails from "./Pages/ArtworkDetails/index";
-/* import AddIllustration from "./Pages/AddIllustration/index"; */
+import AddIllustration from "./Pages/AddIllustration/index";
 import SignUpPage from "./Pages/SignUp/index";
 import LogInPage from "./Pages/Login/index";
 import Profile from "./Pages/UserProfile/index";
 /* import IsPrivate from "./Components/IsPrivate"; */
 
 //IsAnon pages that can beaccessed by an anonymous user
-//acts like a public page
+//Acts like a public page
 import IsAnon from "./Components/IsAnon";
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route
-            path="api/illustrations"
+            path="/illustrations"
             element={
               <IsAnon>
                 <IllustrationList />
@@ -32,7 +32,7 @@ function App() {
             }
           />
           <Route
-            path="api/illustrations/:illustrationtId"
+            path="/illustrations/:id"
             element={
               <IsAnon>
                 <IllustrationDetails />
@@ -64,7 +64,7 @@ function App() {
             }
           />
           <Route
-            path="/user-profile/:userId"
+            path="/user-profile"
             element={
               <IsAnon>
                 <Profile />
