@@ -50,6 +50,7 @@ const apiURL = "http://localhost:5005";
 
 function Profile() {
   const [user, setUser] = useState(null);
+  const [userId, setId] = useState(null);
 
   const { id } = useParams();
 
@@ -61,6 +62,7 @@ function Profile() {
           `${import.meta.env.VITE_APP_SERVER_URL}/api/user-profile/${id}`
         );
         setUser(response.data);
+        setId(id)
       } catch (error) {
         console.log(error);
       }
@@ -76,11 +78,11 @@ function Profile() {
           <h1>{user.username} Illustration List</h1>
         </div>
       )}
-      <Link to="/user-profile/:id" className="edit-profile">
+      <Link to={`/user-profile/${id}`} className="edit-profile">
         Edit your Profile
       </Link>
 
-      <Link to="/add-illustration" className="illustration-link">
+      <Link to={`/user-profile/${id}/add-illustration/`}  className="illustration-link">
         <p>Add Illustrations</p>
       </Link>
     </div>
