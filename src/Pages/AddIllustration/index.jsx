@@ -16,7 +16,7 @@ function AddIllustration(props) {
 
   const { id } = useParams();
 
-  const navigate = useNavigate(); //
+  const navigate = useNavigate();
 
   const handleImageUpload = (e) => {
     setUploading(true);
@@ -25,11 +25,10 @@ function AddIllustration(props) {
     uploadData.append("imageUrl", e.target.files[0]);
 
     axios
-      .post(`${import.meta.env.VITE_APP_SERVER_URL}/api/upload`, uploadData) //
+      .post(`${import.meta.env.VITE_APP_SERVER_URL}/api/upload`, uploadData)
       .then((response) => {
         setImageUrl(response.data.fileUrl);
         setAuthor(id);
-        console.log(imageUrl);
         setUploading(false);
       })
       .catch((err) => console.log("Error while uploading the file: ", err));
@@ -93,7 +92,11 @@ function AddIllustration(props) {
           onChange={(e) => setPrice(e.target.value)}
         />
         <input type="file" name="illustration-image" />
-        <button type="submit">Submit</button>
+        {uploading ? (
+          <p>Image Uploading, please wait</p>
+        ) : (
+          <button type="submit">Submit</button>
+        )}
       </form>
     </div>
   );

@@ -130,24 +130,89 @@ Components:
 **Illustration model**
 
 ```javascript
- {
-   name: {type: String, required: true},
-   img: {type: String, required: true},
-   price: {type: Number, required: true},
-   timeOfCreation: {type: String, required: true,;},
- }
+{
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'User',
+  },
+  name: {
+    type: String,
+    required: true,
+    },
+  imageUrl: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  date: {
+    type: Number,
+    required: true,
+  }
+}
 ```
 
-**Billing-details model**
+**Billing model**
 
 ```javascript
 {
-    firstName: { type: String, required: true },
-    lastName: { type: String, required: true },
-    address: { type: String, required: true },
-    email: { type: String, required: true },
-    phone_number: { type: String, required: true },
-} 
+  firstName: {
+      type: String,
+      required: true,
+  },
+  lastName: {
+      type: String,
+      required: true,
+  },
+  address: {
+      type: String,
+      required: true,
+  },
+  email: {
+      type: String,
+  },
+  phone_number: {
+      type: Number,
+  },
+  payment_id: {
+      type: Schema.Types.ObjectId,
+      ref: "Payment",
+  },
+},
+{
+  timestamps: true,
+}
+```
+
+**Payment model**
+
+```javascript
+{
+  userBuying: {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+  },
+  items: [
+    {
+    type: Schema.Types.ObjectId,
+    ref: "Illustration",
+    }
+  ],
+  itemsAuthors: [
+    {
+    type: Schema.Types.ObjectId,
+    ref: "User",
+    }
+  ],
+  totalPrice: {
+    type: Number,
+  }
+},
+{
+  timestamps: true,
+}
 ```
 
 <br>
@@ -155,18 +220,25 @@ Components:
 
 ## API Endpoints (backend routes)
 
-| HTTP Method | URL                     | Request Body                 | Success status | Error Status | Description          |
-| ----------- | ----------------------- | ---------------------------- | -------------- | ------------ | -------------------- |
-| GET         | `/auth/profile    `     | Saved session                | 200            | 404          | check if logged in   |
-| POST        | `/auth/signup`          | {name, email, password}      | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
-| POST        | `/auth/login`           | {username, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session      |
-| POST        | `/auth/logout`          |                              | 204            | 400          | Logs out the user    |
-| GET         | `/api/illustrations`    |                              |                | 400          | Show all tournaments |
-| GET         | `/api/illustrations/:id`|                              |                |              | Show specific Art    |
-| POST        | `/api/illustration`     |                              | 201            | 400          | Create new Art       |
-| GET         | `/api/user-profile/:id` |                              |                |              | show User info       |
-| PUT         | `/api/user-profile/:id` |                              |                |              | Edit User info       |
-| DEL         | `/api/user-profile/:id` |                              |                |              | Edit User info       |
+| HTTP Method | URL                    | Request Body                | Success status | Error Status | Description         |
+| ----------- | ---------------------- | --------------------------- | -------------- | ------------ | ------------------- |
+| GET         | `/test    `            | test route                  |                |              | just a test route   |
+|AUTHENTICATION|-|-|-|-|-|
+| GET         | `/auth/profile    `    | Saved session               | 200            | 404          | check if logged in  |
+| POST        | `/auth/signup`         | {username, email, password} | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
+| POST        | `/auth/login`          | {email, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
+|ILLUSTRATIONS|-|-|-|-|-|
+| GET         | `/api/illustration`    |                             |                | 400          | Show all tournaments|
+| GET         | `/api/illustration/:id`|                             |                |              | Show specific Art   |
+| POST        | `/api/illustration`    |                             | 201            | 400          | Create new Art      |
+| POST        | `/api/illustration/upload`|                          | 201            | 400          | upload image        |
+|USER|-|-|-|-|-|
+| GET         | `/api/user-profile/:id`|                             |                |              | show User info      |
+| PUT         | `/api/user-profile/:id`|                             |                |              | Edit User info      |
+| DEL         | `/api/user-profile/:id`|                             |                |              | Edit User info      |
+|PAYMENTS|-|-|-|-|-|
+| GET         | `/api/payment/`        |                             |                |              | show User info      |
+
 
 <br>
 
@@ -195,7 +267,7 @@ Components:
 
 [Git Repo Front-end](https://github.com/Marisa-Pinheiro/Art-Lab-FrontEnd)
 
-[Git Repo Back-end](https://github.com/Marisa-Pinheiro/Art-Lab-FrontEnd)
+[Git Repo Back-end](https://github.com/Marisa-Pinheiro/Art-Lab-Backend)
 
 [Deploy Link]()
 
