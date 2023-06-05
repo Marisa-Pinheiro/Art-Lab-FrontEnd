@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+/* import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
+
+const apiURL = 'http://localhost:5005'
+
 function Profile() {
   const [user, setUser] = useState(null);
-  const [name, setName] = useState("");
-  const [price, setPrice] = useState(0);
-  const [date, setDate] = useState(0);
+
   
   const { id } = useParams();
   console.log(id);
@@ -23,25 +24,50 @@ function Profile() {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  return (
+    <div>
+      {user && (
+        <div className="user-info">
+          <h1>{user.username} Illustration List</h1>
+        </div>
+      )}
+      <Link to="/add-illustration" className="illustration-link">
+          <p>Add Illustrations</p>
+      </Link>
 
-    const requestBody = { name:name , price:price, date:date };
+    </div>
+  );
+}
 
-    axios
-      .post(`${apiURL}/user-profile/${id}`, requestBody)
-      .then((response) => {
-        setName("");
-        setPrice(0);
-        setDate(0);
-        props.addIllustrations();
-      })
-      .catch((error) => console.log(error));
-  };
+export default Profile; */
+
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Link, useParams } from "react-router-dom";
+
+
+const apiURL = "http://localhost:5005";
+
+function Profile() {
+  const [user, setUser] = useState(null);
+
+  const { id } = useParams();
 
   useEffect(() => {
+    const getUser = async () => {
+      try {
+        const storedToken = localStorage.getItem("authToken");
+        let response = await axios.get(
+          `${import.meta.env.VITE_APP_SERVER_URL}/api/user-profile/${id}`
+        );
+        setUser(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
     getUser();
-  }, []);
+  }, [id]);
 
   return (
     <div>
@@ -49,31 +75,17 @@ function Profile() {
         <div className="user-info">
           <h1>{user.username} Illustration List</h1>
         </div>
-      
-       <form action="/illustrations" method="post" enctype="multipart/form-data" onSubmit={handleSubmit}>
-        <p>Author: {id}</p>
-        <label>
-          Name:
-          <input type="text" name="name" class="form-control" value={name}
-          onChange={(e) => setName(e.target.value)}/>
-        </label>
-        <label>
-          Date:
-          <input type="number" name="year" class="form-control" value={date}
-          onChange={(e) => setDate(e.target.value)}/>
-        </label>
-        <label>
-          Price:
-          <input type="number" name="price" class="form-control" value={price}
-          onChange={(e) => setPrice(e.target.value)}/>
-        </label>
-        <input type="file" name="illustration-image" />
-        <button type="submit">Submit</button>
-      </form>
-   )}
-     
+      )}
+      <Link to="/user-profile/:id" className="edit-profile">
+        Edit your Profile
+      </Link>
+
+      <Link to="/add-illustration" className="illustration-link">
+        <p>Add Illustrations</p>
+      </Link>
     </div>
   );
 }
+
 
 export default Profile;

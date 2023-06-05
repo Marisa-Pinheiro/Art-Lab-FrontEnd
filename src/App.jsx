@@ -22,41 +22,14 @@ function App() {
       <NavBar />
       <div className="body">
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/illustrations" element={<IllustrationList />} />
-          <Route
-            path="/illustrations/:id"
-            element={
-              <IsAnon>
-                <IllustrationDetails />
-              </IsAnon>
-            }
-          />
-          {/*         <Route
-          path="/illustrations/edit/:illustrationtId"
-          element={
-            <IsAnon>
-              <EditProjectPage />{" "}
-            </IsAnon>
-          }
-        /> */}
-          <Route
-            path="/signup"
-            element={
-              <IsAnon>
-                <SignUpPage />
-              </IsAnon>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <IsAnon>
-                <LogInPage />
-              </IsAnon>
-            }
-          />
-          <Route path="/user-profile/:id" element={<Profile />} />
+          <Route path="/" element={<HomePage/>}/>
+          <Route path="/illustrations" element={<IllustrationList/>}/>
+          <Route path="/illustrations/:id" element={<IsAnon><IllustrationDetails/></IsAnon>}/>
+          <Route path="/signup" element={<IsAnon><SignUpPage/></IsAnon>}/>
+          <Route path="/login" element={<IsAnon><LogInPage/></IsAnon>}/>
+          <Route path="/user-profile/:id" element={<Profile/>}/>
+          <Route path="add-illustration" element={<AddIllustration/>}/>
+          {/*<Route path="/illustrations/edit/:illustrationtId" element={<IsAnon><EditProjectPage/>{" "}</IsAnon>}/> */}
         </Routes>
       </div>
     </div>

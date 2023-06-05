@@ -1,37 +1,32 @@
-import axios from "axios"; //LOOK HERE
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
-const apiURL = "http://localhost:5005";//LOOK HERE
+import projectsService from '../../../Services/project.services';
 
 function IllustrationList() {
   const [illustrations, setIllustrations] = useState([]);
 
-  //function that gets projects via axios
   const getAllIllustrations = () => {
-    //Route created in backend and tested in Postman
-    axios
-      .get(`${apiURL}/api/illustrations`)
-      .then((response) => setIllustrations(response.data))
-      .catch((error) => console.log(error));
+    projectsService.getAllIllustrations()
+    .then((response)=> setIllustrations(response.data))
+    .catch((error)=>console.log(error));
   };
 
-  //Setting a side-effect after initial rendering that is
-  //calling getAllProjects function
   useEffect(() => {
     getAllIllustrations();
   }, []);
 
   return (
     <div className="illustrations-list-page">
-      <p>There are no illustrations yet!</p>
       {illustrations.map((illustration) => {
+        if (illustrations.length === 0){
+          return (<p>There are no illustrations yet!</p>)
+        }
+        else
         return (
-            //careful with this id part
-          <div className="illustration-card card" key={illustration._id}> 
+          <div > {/*className="illustration-card card" key={illustration._id}*/}
             <Link to={`/illustrations/${illustration._id}`}>
-              <h3>{illustration.title}</h3>
+              <img src={illustration.imageUrl} alt='illustration image' />
             </Link>
           </div>
         );

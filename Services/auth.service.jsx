@@ -4,8 +4,7 @@ class AuthService {
   constructor() {
     // Create a new instance of axios with a custom configuration
     this.api = axios.create({
-      baseURL: import.meta.env.VITE_APP_SERVER_URL || "http://localhost:5005",
-      // We set our API's base URL so that all requests use the same base URL
+      baseURL: import.meta.env.VITE_APP_SERVER_URL,
     });
 
     // Automatically set JWT token in the headers for every request
@@ -23,24 +22,17 @@ class AuthService {
 
   login = (requestBody) => {
     return this.api.post("/auth/login", requestBody);
-    // same as
-    // return axios.post("http://localhost:5005/auth/login");
   };
 
   signup = (requestBody) => {
     return this.api.post("/auth/signup", requestBody);
-    // same as
-    // return axios.post("http://localhost:5005/auth/singup");
   };
 
   verify = () => {
     return this.api.get("/auth/verify");
-    // same as
-    // return axios.post("http://localhost:5005/auth/verify");
   };
 }
 
-// Create one instance object
 const authService = new AuthService();
 
 export default authService;
