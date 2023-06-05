@@ -21,7 +21,7 @@ function AddIllustration(props) {
         setName("");
         setPrice(0);
         setDate([]);
-        props.refreshProjects();
+        props.refreshIllustrations();
       })
       .catch((error) => console.log(error));
   };

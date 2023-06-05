@@ -4,6 +4,10 @@ import { Link, useParams } from "react-router-dom";
 
 function Profile() {
   const [user, setUser] = useState(null);
+  const [name, setName] = useState("");
+  const [price, setPrice] = useState(0);
+  const [date, setDate] = useState(0);
+  
   const { id } = useParams();
   console.log(id);
   const getUser = async () => {
@@ -19,6 +23,22 @@ function Profile() {
     }
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const requestBody = { name:name , price:price, date:date };
+
+    axios
+      .post(`${apiURL}/user-profile/${id}`, requestBody)
+      .then((response) => {
+        setName("");
+        setPrice(0);
+        setDate(0);
+        props.addIllustrations();
+      })
+      .catch((error) => console.log(error));
+  };
+
   useEffect(() => {
     getUser();
   }, []);
@@ -30,21 +50,25 @@ function Profile() {
           <h1>{user.username} Illustration List</h1>
         </div>
       
-       <form action="/illustrations" method="post" enctype="multipart/form-data">
+       <form action="/illustrations" method="post" enctype="multipart/form-data" onSubmit={handleSubmit}>
         <p>Author: {id}</p>
         <label>
           Name:
-          <input type="text" name="name" class="form-control" />
+          <input type="text" name="name" class="form-control" value={name}
+          onChange={(e) => setName(e.target.value)}/>
         </label>
         <label>
           Date:
-          <input type="number" name="year" class="form-control" />
+          <input type="number" name="year" class="form-control" value={date}
+          onChange={(e) => setDate(e.target.value)}/>
         </label>
         <label>
           Price:
-          <input type="number" name="price" class="form-control" />
+          <input type="number" name="price" class="form-control" value={price}
+          onChange={(e) => setPrice(e.target.value)}/>
         </label>
         <input type="file" name="illustration-image" />
+        <button type="submit">Submit</button>
       </form>
    )}
      
