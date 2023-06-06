@@ -14,7 +14,7 @@ function IllustrationDetails() {
       .then((response) => {
         const oneIllustration = response.data;
         setIllustration(oneIllustration);
-        console.log(oneIllustration)
+        console.log(oneIllustration);
       })
       .catch((error) => console.log(error));
   };

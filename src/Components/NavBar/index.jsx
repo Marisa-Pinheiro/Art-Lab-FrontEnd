@@ -32,6 +32,9 @@ function NavBar() {
               User
             </Link>
           )}
+          <Link to={"/cart"} className="nav_link">
+            Cart
+          </Link>
         </div>
       ) : (
         <div className="loggedOut">

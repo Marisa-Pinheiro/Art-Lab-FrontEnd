@@ -44,9 +44,17 @@ export default Profile; */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-
-
-const apiURL = "http://localhost:5005";
+import {
+  MDBCol,
+  MDBContainer,
+  MDBRow,
+  MDBCard,
+  MDBCardText,
+  MDBCardBody,
+  MDBCardImage,
+  MDBTypography,
+  MDBIcon,
+} from "mdb-react-ui-kit";
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -62,7 +70,7 @@ function Profile() {
           `${import.meta.env.VITE_APP_SERVER_URL}/api/user-profile/${id}`
         );
         setUser(response.data);
-        setId(id)
+        setId(id);
       } catch (error) {
         console.log(error);
       }
@@ -72,22 +80,33 @@ function Profile() {
   }, [id]);
 
   return (
-    <div>
+    <div className="user-profile-page">
+      <div className="header-user-profile-options">
+        <Link to={`/user-profile/${id}/edit`} className="edit-profile">
+          Edit your Profile
+        </Link>
+        <Link
+          to={`/user-profile/${id}/add-illustration/`}
+          className="illustration-link"
+        >
+          <p>Add Illustrations</p>
+        </Link>
+      </div>
+
       {user && (
-        <div className="user-info">
-          <h1>{user.username} Illustration List</h1>
+        <div>
+          <div className="user-info">
+            <h1>{user.username} Illustrations List</h1>
+            <h5>{user.email}</h5>
+          </div>
+          <div className="user-added-artworks">
+            <h3>{user.username} Artworks</h3>
+          </div>
         </div>
       )}
-      <Link to={`/user-profile/${id}/edit`} className="edit-profile">
-        Edit your Profile
-      </Link>
-
-      <Link to={`/user-profile/${id}/add-illustration/`}  className="illustration-link">
-        <p>Add Illustrations</p>
-      </Link>
+      <div className="user-favourites">Favourites</div>
     </div>
   );
 }
-
 
 export default Profile;

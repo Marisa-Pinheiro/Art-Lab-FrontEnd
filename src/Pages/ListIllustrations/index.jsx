@@ -1,39 +1,41 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import projectsService from '../../../Services/project.services';
+import projectsService from "../../../Services/project.services";
 
 function IllustrationList() {
   const [illustrations, setIllustrations] = useState([]);
+  const [selectedIllustrations, setSelectedIllustrations] = useState([]);
 
   const getAllIllustrations = () => {
-    projectsService.getAllIllustrations()
-    .then((response)=> setIllustrations(response.data))
-    .catch((error)=>console.log(error));
+    projectsService
+      .getAllIllustrations()
+      .then((response) => setIllustrations(response.data))
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
     getAllIllustrations();
   }, []);
 
+  const addToCart = (illustration) => {
+    setSelectedIllustrations((prevSelected) => [...prevSelected, illustration]);
+  };
+
   return (
     <div className="illustrations-list-page">
-      {illustrations.map((illustration) => {
-        if (illustrations.length === 0){
-          return (<p>There are no illustrations yet!</p>)
-        }
-        else
-        return (
-          <div > {/*className="illustration-card card" key={illustration._id}*/}
-            <Link to={`/illustration/${illustration._id}`}>
-              <img src={illustration.imageUrl} alt='illustration image' />
-            </Link>
-          </div>
-        );
-      })}
-      
+      {illustrations.length === 0 && <p>There are no illustrations yet!</p>}
+      {illustrations.map((illustration) => (
+        <div key={illustration._id}>
+          <Link to={`/illustration/${illustration._id}`}>
+            <img src={illustration.imageUrl} alt="illustration image" />
+          </Link>
+          <button onClick={() => addToCart(illustration)}>Add to cart</button>
+        </div>
+      ))}
     </div>
   );
 }
 
 export default IllustrationList;
+
