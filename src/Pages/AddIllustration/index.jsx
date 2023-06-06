@@ -7,29 +7,25 @@ import projectsService from "../../../Services/project.services";
 const apiUrl = "http://localhost:5005";
 
 function AddIllustration(props) {
-  const [author, setAuthor] = useState("");
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [date, setDate] = useState("");
   const [imageUrl, setImageUrl] = useState(""); //Stores the image
-  const [uploading, setUploading] = useState(false); //LOOK HERE
 
   const { id } = useParams();
 
   const navigate = useNavigate();
 
-  const handleImageUpload = (e) => {
-    setUploading(true);
+  const handleFileUpload = (e) => {
 
     const uploadData = new FormData();
     uploadData.append("imageUrl", e.target.files[0]);
 
-    axios
-      .post(`${import.meta.env.VITE_APP_SERVER_URL}/api/upload`, uploadData)
-      .then((response) => {
+    projectsService
+      .uploadImage(uploadData)
+      .then(response => {
         setImageUrl(response.data.fileUrl);
-        setAuthor(id);
-        setUploading(false);
+
       })
       .catch((err) => console.log("Error while uploading the file: ", err));
   };
@@ -38,7 +34,7 @@ function AddIllustration(props) {
     e.preventDefault();
 
     const requestBody = {
-      author: author,
+      author: id,
       name: name,
       price: price,
       date: date,
@@ -92,11 +88,9 @@ function AddIllustration(props) {
           onChange={(e) => setPrice(e.target.value)}
         />
         <input type="file" name="illustration-image" />
-        {uploading ? (
-          <p>Image Uploading, please wait</p>
-        ) : (
-          <button type="submit">Submit</button>
-        )}
+
+        <button type="submit">Submit</button>
+
       </form>
     </div>
   );

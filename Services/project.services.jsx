@@ -23,13 +23,22 @@ class ProjectsService {
 
   // GET Illustrations
   getAllIllustrations = () => {
-    return this.api.get('/api/illustration');
+    return this.api.get('/api/illustration/');
   };
 
   // POST Illustrations
+  // Upload
+  uploadImage = (file) => {
+    return api.post("/api/illustration/upload", file)
+      .then(res => res.data)
+      .catch(errorHandler);
+  };
+
   createIllustration = (requestBody) => {
     return this.api.post('/api/illustration', requestBody);
   };
+
+
 
   getUser = () => {
     return this.api.get("/api/user-profile/:id");
