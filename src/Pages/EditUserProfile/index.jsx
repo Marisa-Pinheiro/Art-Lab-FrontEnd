@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
+
+const apiURL = "http://localhost:5005";
+
 function EditUser() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +15,7 @@ function EditUser() {
 
   useEffect(() => {
     axios
-      .get(`${API_URL}/api/user-profile/${id}`)
+      .get(`${apiURL}/api/user-profile/${id}`)
       .then((response) => {
         const oneUser = response.data;
         setUsername(oneUser.username);

@@ -25,7 +25,7 @@ function IllustrationList() {
         else
         return (
           <div > {/*className="illustration-card card" key={illustration._id}*/}
-            <Link to={`/illustrations/${illustration._id}`}>
+            <Link to={`/illustration/${illustration._id}`}>
               <img src={illustration.imageUrl} alt='illustration image' />
             </Link>
           </div>

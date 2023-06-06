@@ -63,7 +63,7 @@ function AddIllustration(props) {
       <h3>Add Artwork</h3>
       <form
         onSubmit={handleSubmit}
-        action="/illustrations"
+        action="/illustration"
         method="post"
         encType="multipart/form-data"
       >

@@ -78,7 +78,7 @@ function Profile() {
           <h1>{user.username} Illustration List</h1>
         </div>
       )}
-      <Link to={`/user-profile/${id}`} className="edit-profile">
+      <Link to={`/user-profile/${id}/edit`} className="edit-profile">
         Edit your Profile
       </Link>
 

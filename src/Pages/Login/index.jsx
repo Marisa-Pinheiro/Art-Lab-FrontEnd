@@ -1,13 +1,39 @@
-import { useState, useContext } from "react";
-import axios from "axios";
+import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/auth.context";
 import authService from "../../../Services/auth.service";
+
+/* Set up firebase */
+import firebase from "../../firebaseConfig";
+import { useAuthState } from "react-firebase-hooks/auth";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+} from "firebase/auth";
+
+const auth = firebase.auth();
+/* End set up */
 
 function LogInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+
+  /* Firebase */
+  const [user] = useAuthState(auth);
+  console.log(user);
+
+  const signInWithGoogle = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider);
+  };
+
+  const signInWithGitHub = () => {
+    const provider = new GithubAuthProvider();
+    signInWithPopup(auth, provider);
+  };
+  /* End */
 
   const navigate = useNavigate();
 
@@ -16,6 +42,25 @@ function LogInPage() {
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
+
+  /* Saving social login info into DB */
+  const handleSocialAuth = async () => {
+    const body = {
+      username: user.displayName,
+      email: user.email,
+      password: user.uid,
+    };
+    //route in backend - check
+    const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`, body)
+    setToken(response.authToken)
+    authenticateUser();
+    navigate("/")
+  };
+
+  useEffect(()=> {
+    handleSocialAuth()
+  },[user])
+  /* End social login */
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
@@ -57,6 +102,13 @@ function LogInPage() {
         <button type="submit">Login</button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+      {/* Firebase */}
+      <p onClick={signInWithGoogle}>Sign in with Google</p>
+      <p onClick={signInWithGitHub}>Sign in with Github</p>
+      <p onClick={() => auth.signOut()}>Logout</p>
+      {user ? <p>You are logged in </p> : <p>You are logged out</p>}
+      {/* Firebase */}
 
       <p>Don't have an account yet?</p>
       <Link to={"/signup"}> Sign Up</Link>

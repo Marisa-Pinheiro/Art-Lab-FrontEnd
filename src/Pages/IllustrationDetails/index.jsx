@@ -6,11 +6,11 @@ const apiURL = "http://localhost:5005";
 
 function IllustrationDetails() {
   const [illustration, setIllustration] = useState(null);
-  const { illustrationId } = useParams();
+  const { id } = useParams();
 
   const getIllustration = () => {
     axios
-      .get(`${apiURL}/api/illustrations/${illustrationId}`)
+      .get(`${apiURL}/api/illustration/${id}`)
       .then((response) => {
         const oneIllustration = response.data;
         setIllustration(oneIllustration);
@@ -33,10 +33,10 @@ function IllustrationDetails() {
           <p>{illustration.timeOfCreation}</p>
         </div>
       )}
-      <Link to={`/illustrations/edit/${illustrationId}`}>
+      <Link to={`/illustration/${id}/edit`}>
         <button>Edit Illustration</button>
       </Link>
-      <Link to="/illustrations">
+      <Link to="/illustration">
         <button>Back to illustrations</button>
       </Link>
     </div>

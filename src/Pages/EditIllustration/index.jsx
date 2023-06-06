@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 const apiURL = "http://localhost:5005";
@@ -15,7 +16,7 @@ function EditIllustration() {
 
   useEffect(() => {
     axios
-      .get(`${apiURL}/api/illustrations/edit/${id}`)
+      .get(`${apiURL}/api/illustration/${id}`)
       .then((response) => {
         const oneIllustration = response.data;
         setName(oneIllustration.name);
@@ -33,9 +34,9 @@ function EditIllustration() {
     const requestBody = { name, price, date };
 
     axios
-      .put(`${apiURL}/api/illustrations/edit/${id}`, requestBody)
+      .put(`${apiURL}/api/illustration/${id}`, requestBody)
       .then((response) => {
-        navigate(`/illustrations/${id}`);
+        navigate(`/illustration/${id}`);
       })
       .catch((error) => {
         console.log(error);
@@ -44,9 +45,9 @@ function EditIllustration() {
 
   const deleteIllustration = () => {
     axios
-      .delete(`${apiURL}/api/illustrations/edit/${id}`)
+      .delete(`${apiURL}/api/illustration/${id}`)
       .then(() => {
-        navigate("/illustrations");
+        navigate("/illustration");
       })
       .catch((error) => {
         console.log(error);
@@ -81,8 +82,10 @@ function EditIllustration() {
         />
         <button type="submit">Edit</button>
       </form>
+      <Link to={`/illustration/${id}`}>
+  <button onClick={deleteIllustration}>Delete your illustration?</button>
+</Link>
 
-      <button onClick={deleteIllustration}>Delete your illustration?</button>
     </div>
   );
 }
