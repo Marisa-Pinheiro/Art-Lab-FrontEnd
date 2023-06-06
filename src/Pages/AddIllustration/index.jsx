@@ -9,23 +9,25 @@ const apiUrl = "http://localhost:5005";
 function AddIllustration(props) {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(0);
   const [imageUrl, setImageUrl] = useState(""); //Stores the image
 
   const { id } = useParams();
 
   const navigate = useNavigate();
 
-  const handleFileUpload = (e) => {
+  const handleFileUpload =  (e) => {
 
     const uploadData = new FormData();
     uploadData.append("imageUrl", e.target.files[0]);
 
-    projectsService
-      .uploadImage(uploadData)
+/*     projectsService
+      .uploadImage(uploadData) */
+
+ axios.post(`${import.meta.env.VITE_APP_SERVER_URL}/api/illustration/upload`, uploadData)
       .then(response => {
         setImageUrl(response.data.fileUrl);
-
+        console.log(response.data.fileUrl)
       })
       .catch((err) => console.log("Error while uploading the file: ", err));
   };
@@ -35,21 +37,20 @@ function AddIllustration(props) {
 
     const requestBody = {
       author: id,
-      name: name,
-      price: price,
-      date: date,
-      imageUrl: imageUrl,
+      name,
+      price,
+      date,
+      imageUrl
     };
 
-    projectsService
-      .createIllustration(requestBody)
+    axios.post(`${import.meta.env.VITE_APP_SERVER_URL}/api/illustration`, requestBody)
       .then(() => {
         setName("")
         setPrice(0);
-        setDate([]);
+        setDate(0);
         setImageUrl("");
-        navigate("/user-profile/:id");
-        props.refreshIllustrations();
+        navigate("/");
+/*         props.refreshIllustrations(); */
       })
       .catch((error) => console.log(error));
   };
@@ -59,21 +60,21 @@ function AddIllustration(props) {
       <h3>Add Artwork</h3>
       <form
         onSubmit={handleSubmit}
-        action="/illustration"
-        method="post"
-        encType="multipart/form-data"
       >
         <label>Name:</label>
         <input
           type="text"
+          required
           name="name"
           className="form-control"
           value={name}
           onChange={(e) => setName(e.target.value)}
+
         />
         <label>Date:</label>
         <input
           type="number"
+          required
           name="year"
           className="form-control"
           value={date}
@@ -82,12 +83,13 @@ function AddIllustration(props) {
         <label>Price:</label>
         <input
           type="number"
+          required
           name="price"
           className="form-control"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         />
-        <input type="file" name="illustration-image" />
+        <input required type="file" onChange={(e)=>handleFileUpload(e)} />
 
         <button type="submit">Submit</button>
 
