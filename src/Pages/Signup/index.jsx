@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
-import authService from "../../../Services/auth.service";
+import authService from "../../../Services/auth.service.jsx";
 
 function SignUpPage() {
   const [email, setEmail] = useState("");

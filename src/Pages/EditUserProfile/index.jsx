@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
-import { AuthContext } from "../../Context/auth.context";
+import { AuthContext } from "../../Context/auth.context.jsx";
 
 const apiURL = "http://localhost:5005";
 

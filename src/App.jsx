@@ -2,15 +2,15 @@ import "./App.css";
 
 import { Routes, Route } from "react-router-dom";
 
-import NavBar from "./Components/NavBar/index";
-import HomePage from "./Pages/Home/index";
-import IllustrationList from "./Pages/ListIllustrations/index";
-import IllustrationDetails from "./Pages/IllustrationDetails/index";
-import AddIllustration from "./Pages/AddIllustration/index";
-import SignUpPage from "./Pages/SignUp/index";
-import LogInPage from "./Pages/Login/index";
-import Profile from "./Pages/UserProfile/index";
-import EditIllustration from "./Pages/EditIllustration/index";
+import NavBar from "./Components/NavBar";
+import HomePage from "./Pages/Home";
+import IllustrationList from "./Pages/ListIllustrations";
+import IllustrationDetails from "./Pages/IllustrationDetails";
+import AddIllustration from "./Pages/AddIllustration";
+import SignUpPage from "./Pages/SignUp";
+import LogInPage from "./Pages/Login";
+import Profile from "./Pages/UserProfile";
+import EditIllustration from "./Pages/EditIllustration";
 import EditUser from "./Pages/EditUserProfile";
 import Cart from "./Pages/Cart";
 /* import IsPrivate from "./Components/IsPrivate"; */
@@ -51,7 +51,7 @@ function App() {
             path="/user-profile/:id/add-illustration/"
             element={<AddIllustration />}
           />
-          <Route path="/cart"  element={<Cart />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </div>
     </div>

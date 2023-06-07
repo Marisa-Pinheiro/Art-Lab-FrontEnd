@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { AuthContext } from "../../Context/auth.context";
-import authService from "../../../Services/auth.service";
+import { AuthContext } from "../../Context/auth.context.jsx";
+import authService from "../../../Services/auth.service.jsx";
 
 /* Set up firebase */
 /* import firebase from "../../firebaseConfig";
@@ -51,15 +51,18 @@ function LogInPage() {
       password: user.uid,
     };
     //route in backend - check
-    const response = await axios.post(`${import.meta.env.VITE_API_URL}/auth/signup`, body)
-    setToken(response.authToken)
+    const response = await axios.post(
+      `${import.meta.env.VITE_API_URL}/auth/signup`,
+      body
+    );
+    setToken(response.authToken);
     authenticateUser();
-    navigate("/")
+    navigate("/");
   };
 
-  useEffect(()=> {
-    handleSocialAuth()
-  },[user])
+  useEffect(() => {
+    handleSocialAuth();
+  }, [user]);
   /* End social login */
 
   const handleLoginSubmit = (e) => {
@@ -117,5 +120,3 @@ function LogInPage() {
 }
 
 export default LogInPage;
-
-
