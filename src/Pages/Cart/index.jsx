@@ -21,7 +21,7 @@ function Cart() {
         }
       );
       setItems(response.data.items);
-      console.log("here ", response.data.items);
+      console.log("here", response.data.items);
     } catch (error) {
       console.log(error);
     }

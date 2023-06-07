@@ -44,7 +44,7 @@ function LogInPage() {
   const handlePassword = (e) => setPassword(e.target.value);
 
   /* Saving social login info into DB */
-  const handleSocialAuth = async () => {
+  /* const handleSocialAuth = async () => {
     const body = {
       username: user.displayName,
       email: user.email,
@@ -62,7 +62,7 @@ function LogInPage() {
 
   useEffect(() => {
     handleSocialAuth();
-  }, [user]);
+  }, [user]); */
   /* End social login */
 
   const handleLoginSubmit = (e) => {
