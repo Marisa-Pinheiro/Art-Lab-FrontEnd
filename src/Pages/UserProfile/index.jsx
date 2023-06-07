@@ -45,20 +45,23 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 
-
 function Profile() {
   const [user, setUser] = useState(null);
+  const [userIllustrations, setUserIllustrations] = useState(null);
 
   const { id } = useParams();
 
   useEffect(() => {
     const getUser = async () => {
       try {
-        const storedToken = localStorage.getItem("authToken");
-        let response = await axios.get(
+        let responseUser = await axios.get(
           `${import.meta.env.VITE_APP_SERVER_URL}/api/user-profile/${id}`
         );
-        setUser(response.data);
+        let responseUserIllustrations = await axios.get(
+          `${import.meta.env.VITE_APP_SERVER_URL}/api/illustration/owner/${id}`
+        );
+        setUser(responseUser.data);
+        setUserIllustrations(responseUserIllustrations.data);
       } catch (error) {
         console.log(error);
       }
@@ -89,6 +92,13 @@ function Profile() {
           </div>
           <div className="user-added-artworks">
             <h3>{user.username} Artworks</h3>
+            {userIllustrations.map((illustration) => {
+              return (
+                <>
+                  <img src={illustration.imageUrl} alt="illustration image" />
+                </>
+              );
+            })}
           </div>
         </div>
       )}

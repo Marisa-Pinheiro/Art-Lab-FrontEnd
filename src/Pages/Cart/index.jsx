@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../../Context/auth.context.jsx";
 
-const apiURL = "http://localhost:5005";
 
 function Cart() {
   const [items, setItems] = useState([]);
@@ -21,7 +20,7 @@ function Cart() {
         }
       );
       setItems(response.data.items);
-      console.log("here", response.data.items);
+    console.log("here", response.data.items);
     } catch (error) {
       console.log(error);
     }
