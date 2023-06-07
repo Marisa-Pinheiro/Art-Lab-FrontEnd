@@ -7,7 +7,7 @@ import HomePage from "./Pages/Home";
 import IllustrationList from "./Pages/ListIllustrations";
 import IllustrationDetails from "./Pages/IllustrationDetails";
 import AddIllustration from "./Pages/AddIllustration";
-import SignUpPage from "./Pages/SignUp";
+import SignUpPage from "./Pages/Signup";
 import LogInPage from "./Pages/Login";
 import Profile from "./Pages/UserProfile";
 import EditIllustration from "./Pages/EditIllustration";
