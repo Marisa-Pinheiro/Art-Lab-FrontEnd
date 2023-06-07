@@ -4,7 +4,7 @@ import { AuthContext } from "../../Context/auth.context";
 import authService from "../../../Services/auth.service";
 
 /* Set up firebase */
-import firebase from "../../firebaseConfig";
+/* import firebase from "../../firebaseConfig";
 import { useAuthState } from "react-firebase-hooks/auth";
 import {
   signInWithPopup,
@@ -12,7 +12,7 @@ import {
   GithubAuthProvider,
 } from "firebase/auth";
 
-const auth = firebase.auth();
+const auth = firebase.auth(); */
 /* End set up */
 
 function LogInPage() {
@@ -21,7 +21,7 @@ function LogInPage() {
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   /* Firebase */
-  const [user] = useAuthState(auth);
+  /* const [user] = useAuthState(auth);
   console.log(user);
 
   const signInWithGoogle = () => {
@@ -32,7 +32,7 @@ function LogInPage() {
   const signInWithGitHub = () => {
     const provider = new GithubAuthProvider();
     signInWithPopup(auth, provider);
-  };
+  }; */
   /* End */
 
   const navigate = useNavigate();
@@ -104,10 +104,10 @@ function LogInPage() {
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       {/* Firebase */}
-      <p onClick={signInWithGoogle}>Sign in with Google</p>
+      {/* <p onClick={signInWithGoogle}>Sign in with Google</p>
       <p onClick={signInWithGitHub}>Sign in with Github</p>
       <p onClick={() => auth.signOut()}>Logout</p>
-      {user ? <p>You are logged in </p> : <p>You are logged out</p>}
+      {user ? <p>You are logged in </p> : <p>You are logged out</p>} */}
       {/* Firebase */}
 
       <p>Don't have an account yet?</p>
@@ -117,3 +117,5 @@ function LogInPage() {
 }
 
 export default LogInPage;
+
+

@@ -103,27 +103,24 @@ Components:
 
 ```javascript
 {
-  username: { type: String, required: true, unique: true },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-	followedIllustration: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Illustration',
-    }
-  ],
-  shoppingCart: [
-    {
-      type: Schema.Types.ObjectId,
-      ref:'Illustration',
-    }
-  ],
-  paymentInformation: [
-    {
-      type: Schema.Types.ObjectId,
-      ref:'Billing-details',
-    }
-  ],
+  username: {
+  type: String,
+  unique: true,
+  required: [true, "username is required."],
+
+  },
+  email: {
+    type: String,
+    unique: true,
+    required: [true, "Email is required."],
+    unique: true,
+    lowercase: true,
+    trim: true,
+  },
+  password: {
+    type: String,
+    required: [true, "Password is required."],
+  }
 }
 ```
 
@@ -154,35 +151,20 @@ Components:
 }
 ```
 
-**Billing model**
+**Shopping Cart model**
 
 ```javascript
 {
-  firstName: {
-      type: String,
-      required: true,
-  },
-  lastName: {
-      type: String,
-      required: true,
-  },
-  address: {
-      type: String,
-      required: true,
-  },
-  email: {
-      type: String,
-  },
-  phone_number: {
-      type: Number,
-  },
-  payment_id: {
+  owner: {
       type: Schema.Types.ObjectId,
-      ref: "Payment",
+      ref: "User",
   },
-},
-{
-  timestamps: true,
+  items: [
+      {
+          type: Schema.Types.ObjectId,
+          ref: "Illustration",
+      }
+  ],
 }
 ```
 
@@ -217,39 +199,43 @@ Components:
 
 <br>
 
-
 ## API Endpoints (backend routes)
 
-| HTTP Method | URL                    | Request Body                | Success status | Error Status | Description         |
-| ----------- | ---------------------- | --------------------------- | -------------- | ------------ | ------------------- |
-| GET         | `/test    `            | test route                  |                |              | just a test route   |
-|AUTHENTICATION|-|-|-|-|-|
-| GET         | `/auth/profile    `    | Saved session               | 200            | 404          | check if logged in  |
-| POST        | `/auth/signup`         | {username, email, password} | 201            | 404          | Checks if fields not empty (422) and user not exists (409), then create user with encrypted password, and store user in session |
-| POST        | `/auth/login`          | {email, password}         | 200            | 401          | Checks if fields not empty (422), if user exists (404), and if password matches (404), then stores user in session |
-|ILLUSTRATIONS|-|-|-|-|-|
-| GET         | `/api/illustration`    |                             |                | 400          | Show all tournaments|
-| GET         | `/api/illustration/:id`|                             |                |              | Show specific Art   |
-| POST        | `/api/illustration`    |                             | 201            | 400          | Create new Art      |
-| POST        | `/api/illustration/upload`|                          | 201            | 400          | upload image        |
-|USER|-|-|-|-|-|
-| GET         | `/api/user-profile/:id`|                             |                |              | show User info      |
-| PUT         | `/api/user-profile/:id`|                             |                |              | Edit User info      |
-| DEL         | `/api/user-profile/:id`|                             |                |              | Edit User info      |
-|PAYMENTS|-|-|-|-|-|
-| GET         | `/api/payment/`        |                             |                |              | show User info      |
-
+| HTTP Method    | URL                                 | Request Body                | Description       |
+| -------------- | ----------------------------------- | --------------------------- | ----------------- |
+| GET            | `/test`                             | test route                  | just a test route |
+| AUTHENTICATION | -                                   | -                           | -                 |
+| GET            | `/auth/profile`                     |                             | show user info    |
+| POST           | `/auth/signup`                      | {username, email, password} | sign up           |
+| POST           | `/auth/login`                       | {email, password}           | login in          |
+| ILLUSTRATIONS  | -                                   | -                           | -                 |
+| GET            | `/api/illustration`                 |                             | Show tournaments  |
+| GET            | `/api/illustration/:id`             |                             | Show specific Art |
+| GET            | `/api/illustration/owner/:ownerid`  |                             | Show Art of user  |
+| POST           | `/api/illustration`                 |                             | Create new Art    |
+| POST           | `/api/illustration/upload`          |                             | upload image Art  |
+| PUT            | `/api/illustration`                 |                             | edit Art          |
+| USER           | -                                   | -                           | -                 |
+| GET            | `/api/user-profile/:id`             |                             | show User info    |
+| PUT            | `/api/user-profile/:id`             |                             | edit User info    |
+| DEL            | `/api/user-profile/:id`             |                             | delete User info  |
+| PAYMENTS       | -                                   | -                           | -                 |
+| GET            | `/api/:userid/cart`                 |                             | show cart info    |
+| POST           | `/api/:userid/cart/:illustrationId` |                             | edit cart info    |
 
 <br>
 
 ## API's
+
 ├── Add API <br>
 └── or API's <br>
 
 <br>
 
 ## Packages
+
 ### BackEnd
+
 ├── bcrypt <br>
 ├── cookie-parser <br>
 ├── cors <br>
@@ -263,6 +249,7 @@ Components:
 <br>
 
 ## Links
+
 [Canva board](https://www.canva.com/design/DAFkYojjrio/3zcG87puCq2Kzyr5adZriw/edit?utm_source=shareButton&utm_medium=email&utm_campaign=designshare)
 
 [Git Repo Front-end](https://github.com/Marisa-Pinheiro/Art-Lab-FrontEnd)
@@ -276,6 +263,7 @@ Components:
 <br>
 
 ## Contributors
+
 **Marisa Pinheiro** <br>
 [`LinkedIn Profile`](https://www.linkedin.com/in/marisa-pinheiro-833a12113/) <br>
 [`Git Profile`](https://github.com/Marisa-Pinheiro) <br>
@@ -283,4 +271,7 @@ Components:
 **Pedro Nogueira** <br>
 [`LinkedIn Profile`](https://www.linkedin.com/in/pedro-nogueira-924851249/) <br>
 [`Git Profile`](https://github.com/Pedro-No) <br>
+
+```
+
 ```

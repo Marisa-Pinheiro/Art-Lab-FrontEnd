@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext} from "react";
 import { AuthContext } from "../../Context/auth.context";
 /* import Profile from "../../Pages/UserProfile/index" */
 
 function NavBar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
+ 
 
   return (
     <nav className="navbar">
@@ -12,6 +13,8 @@ function NavBar() {
         <Link to="/">
           <img src="../../public/Images/LogoArtLab.png" alt="logo" />
         </Link>
+       {/*  <SearchBar/> */}
+
       </div>
       <div className="nav-link">
         <Link to="/" className="home-link">

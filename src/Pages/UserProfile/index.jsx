@@ -44,21 +44,10 @@ export default Profile; */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import {
-  MDBCol,
-  MDBContainer,
-  MDBRow,
-  MDBCard,
-  MDBCardText,
-  MDBCardBody,
-  MDBCardImage,
-  MDBTypography,
-  MDBIcon,
-} from "mdb-react-ui-kit";
+
 
 function Profile() {
   const [user, setUser] = useState(null);
-  const [userId, setId] = useState(null);
 
   const { id } = useParams();
 
@@ -70,7 +59,6 @@ function Profile() {
           `${import.meta.env.VITE_APP_SERVER_URL}/api/user-profile/${id}`
         );
         setUser(response.data);
-        setId(id);
       } catch (error) {
         console.log(error);
       }
