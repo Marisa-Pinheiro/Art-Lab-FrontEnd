@@ -2,37 +2,40 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../Context/auth.context.jsx";
-import SearchBar from "../../Components/SearchBar/index.jsx"; 
+import SearchBar from "../../Components/SearchBar/index.jsx";
 
 import projectsService from "../../../Services/project.services";
 
 function IllustrationList() {
   const [illustrations, setIllustrations] = useState([]);
-const [searchQuery, setSearchQuery] = useState("");
-const [filteredIllustration, setFilteredIllustration]= useState("")
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filteredIllustration, setFilteredIllustration] = useState("");
 
   const { user } = useContext(AuthContext);
 
-  
   const getSearchIllustrations = () => {
-     if (searchQuery !== "") {
-       const result = [];
- 
-       for (let i = 0; i < illustrations.length; i++) {
-         if (illustrations[i].name.toLowerCase().includes(searchQuery.toLowerCase())) {
-           result.push(illustrations[i]);
-         }
-       }
- 
-       setFilteredIllustration(filteredIllustration);
-     } else if (searchQuery === "") {
+    if (searchQuery !== "") {
+      const result = [];
+
+      for (let i = 0; i < illustrations.length; i++) {
+        if (
+          illustrations[i].name
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase())
+        ) {
+          result.push(illustrations[i]);
+        }
+      }
+
+      setFilteredIllustration(filteredIllustration);
+    } else if (searchQuery === "") {
       getAllIllustrations();
-     }
-   };
- 
-   useEffect(() => {
+    }
+  };
+
+  useEffect(() => {
     getSearchIllustrations();
-   }, [searchQuery]);
+  }, [searchQuery]);
 
   const getAllIllustrations = () => {
     projectsService
@@ -44,8 +47,6 @@ const [filteredIllustration, setFilteredIllustration]= useState("")
   useEffect(() => {
     getAllIllustrations();
   }, []);
-
- 
 
   const handleClick = (illustration) => {
     axios
@@ -65,10 +66,10 @@ const [filteredIllustration, setFilteredIllustration]= useState("")
 
   return (
     <div className="illustrations-list-page">
-      <SearchBar illustrations={illustrations}
-            setSearchQuery={setSearchQuery}
-            
-          />
+      <SearchBar
+        illustrations={illustrations}
+        setSearchQuery={setSearchQuery}
+      />
       {illustrations.length === 0 && <p>There are no illustrations yet!</p>}
       {illustrations.map((illustration) => (
         <div key={illustration._id}>

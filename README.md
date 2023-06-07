@@ -201,27 +201,28 @@ Components:
 
 ## API Endpoints (backend routes)
 
-| HTTP Method    | URL                                 | Request Body                | Description       |
-| -------------- | ----------------------------------- | --------------------------- | ----------------- |
-| GET            | `/test`                             | test route                  | just a test route |
-| AUTHENTICATION | -                                   | -                           | -                 |
-| GET            | `/auth/profile`                     |                             | show user info    |
-| POST           | `/auth/signup`                      | {username, email, password} | sign up           |
-| POST           | `/auth/login`                       | {email, password}           | login in          |
-| ILLUSTRATIONS  | -                                   | -                           | -                 |
-| GET            | `/api/illustration`                 |                             | Show tournaments  |
-| GET            | `/api/illustration/:id`             |                             | Show specific Art |
-| GET            | `/api/illustration/owner/:ownerid`  |                             | Show Art of user  |
-| POST           | `/api/illustration`                 |                             | Create new Art    |
-| POST           | `/api/illustration/upload`          |                             | upload image Art  |
-| PUT            | `/api/illustration`                 |                             | edit Art          |
-| USER           | -                                   | -                           | -                 |
-| GET            | `/api/user-profile/:id`             |                             | show User info    |
-| PUT            | `/api/user-profile/:id`             |                             | edit User info    |
-| DEL            | `/api/user-profile/:id`             |                             | delete User info  |
-| PAYMENTS       | -                                   | -                           | -                 |
-| GET            | `/api/:userid/cart`                 |                             | show cart info    |
-| POST           | `/api/:userid/cart/:illustrationId` |                             | edit cart info    |
+| HTTP Method    | URL                                     | Request Body                | Description       |
+| -------------- | --------------------------------------- | --------------------------- | ----------------- |
+| GET            | `/test`                                 | test route                  | just a test route |
+| AUTHENTICATION | -                                       | -                           | -                 |
+| GET            | `/auth/profile`                         |                             | show user info    |
+| POST           | `/auth/signup`                          | {username, email, password} | sign up           |
+| POST           | `/auth/login`                           | {email, password}           | login in          |
+| ILLUSTRATIONS  | -                                       | -                           | -                 |
+| GET            | `/api/illustration`                     |                             | Show tournaments  |
+| GET            | `/api/illustration/:id`                 |                             | Show specific Art |
+| GET            | `/api/illustration/owner/:ownerid`      |                             | Show Art of user  |
+| POST           | `/api/illustration`                     |                             | Create new Art    |
+| POST           | `/api/illustration/upload`              |                             | upload image Art  |
+| PUT            | `/api/illustration`                     |                             | edit Art          |
+| USER           | -                                       | -                           | -                 |
+| GET            | `/api/user-profile/:id`                 |                             | show User info    |
+| PUT            | `/api/user-profile/:id`                 |                             | edit User info    |
+| DEL            | `/api/user-profile/:id`                 |                             | delete User info  |
+| PAYMENTS       | -                                       | -                           | -                 |
+| GET            | `/api/:userid/cart`                     |                             | show cart info    |
+| POST           | `/api/:userid/cart/:illustrationId`     |                             | edit cart info    |
+| POST           | `/api/:userid/cart/del/:illustrationId` |                             | edit cart info    |
 
 <br>
 
