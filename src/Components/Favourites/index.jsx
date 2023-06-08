@@ -2,12 +2,9 @@ import { useEffect, useContext, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../../Context/auth.context";
 
-
-
 function Favourites() {
   const [favourites, setFavourite] = useState([]);
   const { user } = useContext(AuthContext);
-  
 
   const getFavourites = async () => {
     try {
@@ -34,16 +31,16 @@ function Favourites() {
       {favourites.length === 0 && <p>Still no favourites?</p>}
       {favourites &&
         favourites.map((fav) => (
-          <div key={item._id}>
+          <div key={fav._id}>
             <div className="remove-button">
-            <button >Remove</button></div>
+              <button>Remove</button>
+            </div>
             <img src={fav.imageUrl} alt={fav.name} />
             <div>
               <p>
                 {fav.name}, {fav.price}€
               </p>
             </div>
-       
           </div>
         ))}
     </div>

@@ -82,7 +82,7 @@ function EditIllustration() {
           value={date}
           onChange={(e) => setDate(e.target.value)}
         /><br></br>
-        <Link to={`/illustration/${id}`}><button type="submit">Edit</button></Link>
+        <Link to={`/illustration/${id}`}><button type="submit" onClick={handleFormSubmit}>Edit</button></Link>
       </form>
       <Link to={`/illustration`}>
   <button onClick={deleteIllustration}>Delete your illustration?</button>

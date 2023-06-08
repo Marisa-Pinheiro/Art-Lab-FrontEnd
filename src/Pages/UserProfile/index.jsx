@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Favourites from "../../Components/Favourites/index";
-
+/* import BoughtList from "../../Components/BoughtIllustrations/index"
+ */
 function Profile() {
   const [user, setUser] = useState(null);
   const [userIllustrations, setUserIllustrations] = useState(null);
@@ -62,6 +63,7 @@ function Profile() {
       )}
       <div className="user-bought">
         <h3>Artworks bought</h3>
+       {/*  <BoughtList/> */}
       </div>
       <div className="user-favourites">
       <h3>Favourites</h3>

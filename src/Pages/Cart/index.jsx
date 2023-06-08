@@ -5,6 +5,7 @@ import { AuthContext } from "../../Context/auth.context.jsx";
 
 function Cart() {
   const [items, setItems] = useState([]);
+  const [bought, setBought] = useState([]);
   const { user } = useContext(AuthContext);
 
   const getCartItems = async () => {
@@ -23,6 +24,20 @@ function Cart() {
     }
   };
 
+  const addBought = (itemId) => {
+   
+    axios
+      .put(
+        `${import.meta.env.VITE_APP_SERVER_URL}/api/${user._id}/paid/${itemId}`
+      )
+      .then((response) => {
+        setBought(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   useEffect(() => {
     getCartItems();
   }, []);
@@ -30,7 +45,9 @@ function Cart() {
   const removeFromCart = (itemId) => {
     axios
       .put(
-        `${import.meta.env.VITE_APP_SERVER_URL}/api/${user._id}/cart/del/${itemId}`
+        `${import.meta.env.VITE_APP_SERVER_URL}/api/${
+          user._id
+        }/cart/del/${itemId}`
       )
       .then((response) => {
         setItems((prevItems) =>
@@ -49,18 +66,19 @@ function Cart() {
         items.map((item) => (
           <div key={item._id}>
             <div className="remove-button">
-            <button onClick={() => removeFromCart(item._id)}>&#x2715;</button></div>
+              <button onClick={() => removeFromCart(item._id)}>&#x2715;</button>
+            </div>
             <img src={item.imageUrl} alt={item.name} />
             <div>
               <p>
                 {item.name}, {item.price}€
               </p>
             </div>
-            <button>Buy</button>
+            <button onClick={() => addBought(item._id)}>Buy</button>
           </div>
         ))}
     </div>
   );
 }
 
-export default Cart
+export default Cart;

@@ -74,33 +74,7 @@ function SignUpPage() {
         </div>
 
         <br></br>
-        <fieldset className="fieldset">
-          <div>
-            <label htmlFor="userType">User Type*</label>
-          </div>
 
-          <div>
-            <input
-              type="radio"
-              className="css-authinput"
-              label="Artist"
-              value="Artist"
-              name="userType"
-              onClick={handleUserType}
-            />
-            <label htmlFor="donor">Artist</label>
-
-            <input
-              type="radio"
-              className="css-authinput"
-              label="Buyer"
-              value="Buyerl"
-              name="userType"
-              onClick={handleUserType}
-            />
-            <label htmlFor="needful">Buyer</label>
-          </div>
-        </fieldset>
         <div>
           <button type="submit">Sign Up</button>
         </div>
