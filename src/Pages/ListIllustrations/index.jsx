@@ -50,11 +50,25 @@ function IllustrationList() {
 
   const handleClick = (illustration) => {
     axios
-      //ROUTING ERROR BETWEEN BACKEND AND FRONTEND
       .post(
         `${import.meta.env.VITE_APP_SERVER_URL}/api/${
           user._id
         }/cart/${illustration}`
+      )
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+
+  const handleClickFavs = (illustration) => {
+    axios
+      .put(
+        `${import.meta.env.VITE_APP_SERVER_URL}/api/${
+          user._id
+        }/favourites-add/${illustration}`
       )
       .then(function (response) {
         console.log(response);
@@ -82,6 +96,9 @@ function IllustrationList() {
           </Link>
           <button onClick={() => handleClick(illustration._id)}>
             Add to cart
+          </button>
+          <button onClick={() => handleClickFavs(illustration._id)}>
+            Add to favourites
           </button>
         </div>
       ))}

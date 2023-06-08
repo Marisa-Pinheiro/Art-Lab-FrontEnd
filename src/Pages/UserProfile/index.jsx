@@ -44,6 +44,7 @@ export default Profile; */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
+import Favourites from "../../Components/Favourites"
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -103,6 +104,7 @@ function Profile() {
         </div>
       )}
       <div className="user-favourites">Favourites</div>
+      <Favourites/>
     </div>
   );
 }

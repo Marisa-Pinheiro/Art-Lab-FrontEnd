@@ -13,6 +13,7 @@ import Profile from "./Pages/UserProfile";
 import EditIllustration from "./Pages/EditIllustration";
 import EditUser from "./Pages/EditUserProfile";
 import Cart from "./Pages/Cart";
+import Footer from "./Components/Footer";
 
 import IsPrivate from "./Components/IsPrivate";
 import IsAnon from "./Components/IsAnon";
@@ -35,6 +36,7 @@ function App() {
           <Route path="/cart" element={<IsPrivate><Cart/></IsPrivate>}/>
         </Routes>
       </div>
+      <Footer/>
     </div>
   );
 }
