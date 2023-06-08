@@ -4,8 +4,6 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/auth.context.jsx";
 
-const apiURL = "http://localhost:5005";
-
 function EditUser() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +16,7 @@ function EditUser() {
 
   useEffect(() => {
     axios
-      .get(`${apiURL}/api/user-profile/${id}`)
+      .get(`${import.meta.env.VITE_APP_SERVER_URL}/api/user-profile/${id}`)
       .then((response) => {
         const oneUser = response.data;
         setUsername(oneUser.username);
@@ -34,8 +32,8 @@ function EditUser() {
     const requestBody = { username, password };
 
     axios
-      .put(`${apiURL}/api/user-profile/${id}`, requestBody)
-      .then((response) => {
+      .put(`${import.meta.env.VITE_APP_SERVER_URL}/api/user-profile/${id}`, requestBody)
+      .then(() => {
         navigate(`/user-profile/${id}`);
       })
       .catch((error) => {
@@ -45,7 +43,7 @@ function EditUser() {
 
   const deleteUser = () => {
     axios
-      .delete(`${apiURL}/api/user-profile/${id}`)
+      .delete(`${import.meta.env.VITE_APP_SERVER_URL}/api/user-profile/${id}`)
       .then(() => {
         logOutUser();
         navigate("/");

@@ -13,10 +13,8 @@ import Profile from "./Pages/UserProfile";
 import EditIllustration from "./Pages/EditIllustration";
 import EditUser from "./Pages/EditUserProfile";
 import Cart from "./Pages/Cart";
-import IsPrivate from "./Components/IsPrivate";
 
-//IsAnon pages that can beaccessed by an anonymous user
-//Acts like a public page
+import IsPrivate from "./Components/IsPrivate";
 import IsAnon from "./Components/IsAnon";
 
 function App() {

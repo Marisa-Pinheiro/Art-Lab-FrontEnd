@@ -2,15 +2,13 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 
-const apiURL = "http://localhost:5005";
-
 function IllustrationDetails() {
   const [illustration, setIllustration] = useState(null);
   const { id } = useParams();
 
   const getIllustration = () => {
     axios
-      .get(`${apiURL}/api/illustration/${id}`)
+      .get(`${import.meta.env.VITE_APP_SERVER_URL}/api/illustration/${id}`)
       .then((response) => {
         const oneIllustration = response.data;
         setIllustration(oneIllustration);

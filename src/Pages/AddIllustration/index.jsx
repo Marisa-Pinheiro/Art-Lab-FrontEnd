@@ -2,11 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-import projectsService from "../../../Services/project.services";
-
-const apiUrl = "http://localhost:5005";
-
-function AddIllustration(props) {
+function AddIllustration() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
   const [date, setDate] = useState(0);

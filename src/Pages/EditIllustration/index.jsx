@@ -3,8 +3,6 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import axios from "axios";
 
-const apiURL = "http://localhost:5005";
-
 function EditIllustration() {
   const [name, setName] = useState("");
   const [price, setPrice] = useState(0);
@@ -16,7 +14,7 @@ function EditIllustration() {
 
   useEffect(() => {
     axios
-      .get(`${apiURL}/api/illustration/${id}`)
+      .get(`${import.meta.env.VITE_APP_SERVER_URL}/api/illustration/${id}`)
       .then((response) => {
         const oneIllustration = response.data;
         setName(oneIllustration.name);
@@ -34,7 +32,7 @@ function EditIllustration() {
     const requestBody = { name, price, date };
 
     axios
-      .put(`${apiURL}/api/illustration/${id}`, requestBody)
+      .put(`${import.meta.env.VITE_APP_SERVER_URL}/api/illustration/${id}`, requestBody)
       .then((response) => {
         navigate(`/illustration/${id}`);
       })
@@ -45,7 +43,7 @@ function EditIllustration() {
 
   const deleteIllustration = () => {
     axios
-      .delete(`${apiURL}/api/illustration/${id}`)
+      .delete(`${import.meta.env.VITE_APP_SERVER_URL}/api/illustration/${id}`)
       .then(() => {
         navigate("/illustration");
       })
