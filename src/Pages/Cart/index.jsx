@@ -24,6 +24,7 @@ function Cart() {
     }
   };
 
+
   const addBought = (itemId) => {
    
     axios
