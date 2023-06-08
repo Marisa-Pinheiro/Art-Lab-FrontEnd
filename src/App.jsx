@@ -23,7 +23,7 @@ function App() {
   return (
     <div className="App">
       
-      <div className="body">
+      <div className="body" style = {{ backgroundImage:`/Images/backgroundHome.jpg`}}>
         <NavBar />
         <Routes>
           <Route path="/" element={<HomePage />} />

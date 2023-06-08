@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import Favourites from "../../Components/Favourites/index";
-import BoughtList from "../../Components/BoughtIllustrations/index"
+import BoughtList from "../../Components/BoughtIllustrations/index";
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -32,7 +32,7 @@ function Profile() {
   return (
     <div className="user-profile-page">
       <div className="header-user-profile-options">
-      {user && <h5>{user.email}</h5> }
+        {user && <h5>{user.email}</h5>}
         <Link to={`/user-profile/${id}/edit`} className="edit-profile">
           Edit your Profile
         </Link>
@@ -43,33 +43,32 @@ function Profile() {
           <p>Add Illustrations</p>
         </Link>
       </div>
-<div className="user-profile-body">
-      {user && (
-        <div>
-          <div className="user-info">
-            <h3>Your Artworks</h3>
-            
+      <div className="user-profile-body">
+        {user && (
+          <div>
+            <div className="user-info">
+              <h3>Your Artworks</h3>
+            </div>
+            <div className="user-added-artworks">
+              {userIllustrations.map((illustration) => {
+                return (
+                  <>
+                    <img src={illustration.imageUrl} alt="illustration image" />
+                  </>
+                );
+              })}
+            </div>
           </div>
-          <div className="user-added-artworks">
-            {userIllustrations.map((illustration) => {
-              return (
-                <>
-                  <img src={illustration.imageUrl} alt="illustration image" />
-                </>
-              );
-            })}
-          </div>
+        )}
+        <div className="user-bought">
+          <h3>Artworks bought</h3>
+          <BoughtList />
         </div>
-      )}
-      <div className="user-bought">
-        <h3>Artworks bought</h3>
-      <BoughtList/>
+        <div className="user-favourites">
+          <h3>Favourites</h3>
+          <Favourites />
+        </div>
       </div>
-      <div className="user-favourites">
-      <h3>Favourites</h3>
-      <Favourites />
-      </div>
-    </div>
     </div>
   );
 }

@@ -35,8 +35,8 @@ function BoughtList() {
               src={bg.imageUrl}
               alt={bg.name}
               style={{
-                width: 500,
-                height: 250,
+                width: 200,
+                height: 100,
               }}
             />
             <div>

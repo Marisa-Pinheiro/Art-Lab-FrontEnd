@@ -130,9 +130,35 @@
   }
 
   .body {
-    margin-top: 10%;
+    /*     background-image: url("/Images/background-home.jpg"); */
+    width: 100%;
+    height: 100%;
+    background-color: #cccccc;
+    margin-top: 4.5%;
+    margin-left: 0%;
     display: flex;
     justify-content: center;
+  }
+
+  .footer {
+    position: sticky;
+    bottom: 0px;
+    width: 100%;
+    height: 5%;
+    background-color: black;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer a {
+    text-decoration: none;
+    color: #cccccc;
+    font-size: 1vw;
+    padding-right: 2%;
+  }
+
+  .footer a:hover {
+    color: crimson;
   }
 
   .navbar {
@@ -211,8 +237,31 @@
     align-items: center;
   }
   .app-logo img {
-    width: 70%;
-    height: 40%;
+    width: 50%;
+    height: 30%;
     margin-bottom: 2%;
+  }
+  .about-section {
+    height: 120%;
+    margin-bottom: 8%;
+  }
+  .about-section-cards {
+    display: flex;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+  }
+  .about-section .card {
+    padding: 3%;
+    margin: 2%;
+  }
+
+  .about-section-cards a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .about-section-cards a:hover {
+    color: crimson;
   }
 }

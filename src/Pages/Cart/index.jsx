@@ -24,14 +24,10 @@ function Cart() {
     }
   };
 
-
-  const addBought = (itemId) => {
-   
+  const handleClick = (itemId) => {
     axios
-      .put(
-        `${import.meta.env.VITE_APP_SERVER_URL}/api/${user._id}/paid/${itemId}`
-      )
-      .then((response) => {
+      .put(`${import.meta.env.VITE_APP_SERVER_URL}/api/${user._id}/paid`)
+      .then(function (response) {
         setBought(response);
       })
       .catch((error) => {
@@ -75,7 +71,7 @@ function Cart() {
                 {item.name}, {item.price}€
               </p>
             </div>
-            <button onClick={() => addBought(item._id)}>Buy</button>
+            <button onClick={() => handleClick(item._id)}>Buy</button>
           </div>
         ))}
     </div>

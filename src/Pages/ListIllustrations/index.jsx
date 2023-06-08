@@ -15,21 +15,22 @@ function IllustrationList() {
 
   const { user } = useContext(AuthContext);
 
- const handleSearch = (e) => {
+  const handleSearch = (e) => {
     setSearchQuery(e.target.value);
 
     const filter = [];
 
-        illustrations.map((illustration) => {
-          if (
-            illustration.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            illustration.name.toLowerCase().includes(searchQuery.toLowerCase())) {
-            filter.push(illustration);
-          }
-        });
-      setFilteredIllustration(filter);
-      console.log(searchQuery)
-  }; 
+    illustrations.map((illustration) => {
+      if (
+        illustration.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        illustration.name.toLowerCase().includes(searchQuery.toLowerCase())
+      ) {
+        filter.push(illustration);
+      }
+    });
+    setFilteredIllustration(filter);
+    console.log(searchQuery);
+  };
 
   const getAllIllustrations = () => {
     projectsService
@@ -74,26 +75,55 @@ function IllustrationList() {
 
   return (
     <div className="illustrations-list-page">
-      <Divider>
+      <div
+        className="search"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          marginBottom: 10,
+          marginTop: 10,
+          alignItems: "center",
+        }}
+      >
         <FaSearch />
         <Input
           type="text"
           value={searchQuery}
           onChange={handleSearch}
+          style={{ marginLeft: 10 }}
           placeholder="Search illustrations..."
         />
-      </Divider>
+      </div>
+      <div className="illustration-list" style={{}}>
       {illustrations.length === 0 && <p>There are no illustrations yet!</p>}
       {illustrations.map((illustration) => {
         if (
           searchQuery.trim() === "" ||
-          illustration.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          illustration.author
+            .toLowerCase()
+            .includes(searchQuery.toLowerCase()) ||
           illustration.name.toLowerCase().includes(searchQuery.toLowerCase())
         ) {
           return (
-            <div key={illustration._id}>
+            <div key={illustration._id} style={{borderWidth: 1,
+              borderStyle: "solid",
+              borderBlockColor: "black",
+              padding: 10,
+              display:"flex",
+              flexDirection:"column",
+              margin:5}}>
               <Link to={`/illustration/${illustration._id}`}>
-                <img src={illustration.imageUrl} alt="Illustration Image" />
+                <img
+                  style={{
+                    width: "max-content",
+                    height: 500,
+                    borderWidth: 1,
+                    borderStyle: "solid",
+                    borderBlockColor: "black",
+                  }}
+                  src={illustration.imageUrl}
+                  alt="Illustration Image"
+                />
                 <p>
                   {illustration.name}, {illustration.date}
                 </p>
@@ -103,14 +133,15 @@ function IllustrationList() {
                 Add to cart
               </button>
               <button onClick={() => handleClickFavs(illustration._id)}>
-              ♥
+                ♥
               </button>
             </div>
           );
         }
         return null; // Hide illustrations that don't match the search query
       })}
+      </div>
     </div>
   );
-    } 
+}
 export default IllustrationList;
