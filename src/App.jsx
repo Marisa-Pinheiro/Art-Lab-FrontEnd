@@ -14,6 +14,7 @@ import EditIllustration from "./Pages/EditIllustration";
 import EditUser from "./Pages/EditUserProfile";
 import Cart from "./Pages/Cart";
 import Footer from "./Components/Footer";
+import AboutUs from "./Pages/AboutUs";
 
 import IsPrivate from "./Components/IsPrivate";
 import IsAnon from "./Components/IsAnon";
@@ -34,6 +35,7 @@ function App() {
           <Route path="/user-profile/:id/edit" element={<IsPrivate><EditUser/></IsPrivate>}/>
           <Route path="/user-profile/:id/add-illustration/" element={<IsPrivate><AddIllustration/></IsPrivate>}/>
           <Route path="/cart" element={<IsPrivate><Cart/></IsPrivate>}/>
+          <Route path="/aboutus" element={<AboutUs/>}/>
         </Routes>
       </div>
       <Footer/>

@@ -18,21 +18,18 @@ function IllustrationList() {
 
     const filter = [];
 
-      for (let i = 0; i < illustrations.length; i++) {
         illustrations.map((illustration) => {
           if (
             illustration.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
             illustration.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
             /* illustration.genre.toLowerCase().includes(searchQuery.toLowerCase()) */
-          ) {
-            filter.push(book);
+     /*      ) {
+            filter.push(illustration);
           }
         });
-      setFilteredIllustration(filteredIllustration);
-    } else if (searchQuery === "") {
-      getAllIllustrations();
-    }
-  }; */
+      setFilteredIllustration(filter);
+      console.log(searchQuery)
+  };  */
 
   /* const handleSearch = (e) => {
     setSearchQuery(e.target.value);
