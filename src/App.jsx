@@ -13,7 +13,7 @@ import Profile from "./Pages/UserProfile";
 import EditIllustration from "./Pages/EditIllustration";
 import EditUser from "./Pages/EditUserProfile";
 import Cart from "./Pages/Cart";
-/* import IsPrivate from "./Components/IsPrivate"; */
+import IsPrivate from "./Components/IsPrivate";
 
 //IsAnon pages that can beaccessed by an anonymous user
 //Acts like a public page
@@ -26,32 +26,15 @@ function App() {
       <div className="body">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/illustration" element={<IllustrationList />} />
-          <Route path="/illustration/:id" element={<IllustrationDetails />} />
-          <Route path="/illustration/:id/edit" element={<EditIllustration />} />
-          <Route
-            path="/signup"
-            element={
-              <IsAnon>
-                <SignUpPage />
-              </IsAnon>
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <IsAnon>
-                <LogInPage />
-              </IsAnon>
-            }
-          />
-          <Route path="/user-profile/:id" element={<Profile />} />
-          <Route path="/user-profile/:id/edit" element={<EditUser />} />
-          <Route
-            path="/user-profile/:id/add-illustration/"
-            element={<AddIllustration />}
-          />
-          <Route path="/cart" element={<Cart />} />
+          <Route path="/illustration" element={<IsPrivate><IllustrationList/></IsPrivate>}/>
+          <Route path="/illustration/:id" element={<IsPrivate><IllustrationDetails/></IsPrivate>}/>
+          <Route path="/illustration/:id/edit" element={<IsPrivate><EditIllustration/></IsPrivate>}/>
+          <Route path="/signup" element={<IsAnon><SignUpPage/></IsAnon>} />
+          <Route path="/login" element={<IsAnon><LogInPage/></IsAnon>}/>
+          <Route path="/user-profile/:id" element={<IsPrivate><Profile/></IsPrivate>}/>
+          <Route path="/user-profile/:id/edit" element={<IsPrivate><EditUser/></IsPrivate>}/>
+          <Route path="/user-profile/:id/add-illustration/" element={<IsPrivate><AddIllustration/></IsPrivate>}/>
+          <Route path="/cart" element={<IsPrivate><Cart/></IsPrivate>}/>
         </Routes>
       </div>
     </div>
