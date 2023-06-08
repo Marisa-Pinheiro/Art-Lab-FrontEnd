@@ -22,7 +22,10 @@ function IllustrationDetails() {
   }, []);
 
   return (
-    <div className="illustration-details">
+    <div className="illustration-details">      
+    <Link to="/illustration">
+        Back
+      </Link>
       {illustration && (
         <div>
           {illustration.img}
@@ -34,9 +37,7 @@ function IllustrationDetails() {
       <Link to={`/illustration/${id}/edit`}>
         <button>Edit Illustration</button>
       </Link>
-      <Link to="/illustration">
-        <button>Back to illustrations</button>
-      </Link>
+
     </div>
   );
 }

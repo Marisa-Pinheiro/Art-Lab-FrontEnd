@@ -54,33 +54,36 @@ function EditIllustration() {
 
   return (
     <div>
+      <Link to={`/illustration/${id}`}>
+        Back
+      </Link>
       <h3>Edit your illustration!</h3>
       <form onSubmit={handleFormSubmit}>
-        <label>Name:</label>
+        <label>Name:</label><br></br>
         <input
           type="text"
           name="name"
           value={name}
           onChange={(e) => setName(e.target.value)}
-        />
+        /><br></br>
 
-        <label>Price</label>
+        <label>Price</label><br></br>
         <input
           type="number"
           name="price"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-        />
-        <label>Date</label>
+        /><br></br>
+        <label>Date</label><br></br>
         <input
           type="number"
           name="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-        />
-        <button type="submit">Edit</button>
+        /><br></br>
+        <Link to={`/illustration/${id}`}><button type="submit">Edit</button></Link>
       </form>
-      <Link to={`/illustration/${id}`}>
+      <Link to={`/illustration`}>
   <button onClick={deleteIllustration}>Delete your illustration?</button>
 </Link>
 

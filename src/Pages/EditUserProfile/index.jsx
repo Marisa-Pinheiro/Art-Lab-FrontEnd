@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../../Context/auth.context.jsx";
+import { Link } from "react-router-dom";
 
 function EditUser() {
   const [username, setUsername] = useState("");
@@ -32,7 +33,10 @@ function EditUser() {
     const requestBody = { username, password };
 
     axios
-      .put(`${import.meta.env.VITE_APP_SERVER_URL}/api/user-profile/${id}`, requestBody)
+      .put(
+        `${import.meta.env.VITE_APP_SERVER_URL}/api/user-profile/${id}`,
+        requestBody
+      )
       .then(() => {
         navigate(`/user-profile/${id}`);
       })
@@ -55,29 +59,34 @@ function EditUser() {
 
   return (
     <div>
+      <Link to={`/user-profile/${id}`}>Back</Link>
       <h3>Edit your profile</h3>
       <form onSubmit={handleFormSubmit}>
-        <label>Username:</label>
+        <label>Username:</label><br></br>
         <input
           required
           type="text"
           name="username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-        />
+        /><br></br>
 
-        <label>Password:</label>
+        <label>Password:</label><br></br>
         <textarea
           required
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-        />
+        /><br></br>
 
-        <button type="submit">Edit</button>
+        <Link to={`/user-profile/${id}`}>
+          <button type="submit">Edit</button>
+        </Link>
       </form>
 
-      <button onClick={deleteUser}>Delete your profile?</button>
+      <Link to={`/`}>
+        <button onClick={deleteUser}>Delete your profile?</button>
+      </Link>
     </div>
   );
 }

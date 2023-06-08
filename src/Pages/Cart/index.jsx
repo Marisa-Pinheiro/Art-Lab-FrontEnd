@@ -3,7 +3,6 @@ import { useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "../../Context/auth.context.jsx";
 
-
 function Cart() {
   const [items, setItems] = useState([]);
 
@@ -20,7 +19,7 @@ function Cart() {
         }
       );
       setItems(response.data.items);
-    console.log("here", response.data.items);
+      console.log("here", response.data.items);
     } catch (error) {
       console.log(error);
     }
@@ -30,6 +29,23 @@ function Cart() {
     getCartItems();
   }, []);
 
+  //NOT FINISHED
+  const removeFromCart = (itemId) => {
+    axios
+      .put(
+        `${import.meta.env.VITE_APP_SERVER_URL}/api/${
+          user._id
+        }/cart/del/${itemId}`
+      )
+      .then((response) => {
+        setItems(items.filter((item) => item._id !== itemId));
+        navigate(`/cart`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
       {items === 0 && <p>Your cart is empty</p>}
@@ -37,14 +53,16 @@ function Cart() {
         items.map((item) => {
           return (
             <div key={item._id}>
-              <img src={item.imageUrl}/>
+              <img src={item.imageUrl} />
               <div>
-                <p>{item.name}</p>
-                <p>{item.price}</p>
+                <p>
+                  {item.name}, {item.price}€
+                </p>
               </div>
             </div>
           );
         })}
+      <button onClick={() => removeFromCart(item._id)}>Remove</button>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function AddIllustration() {
@@ -59,9 +60,10 @@ function AddIllustration() {
 
   return (
     <div className="add-illustration">
+      <Link to={`/user-profile/${id}`}>Back</Link>
       <h3>Add Artwork</h3>
       <form onSubmit={handleSubmit}>
-        <label>Name:</label>
+        <label>Name:</label><br></br>
         <input
           type="text"
           required
@@ -69,8 +71,8 @@ function AddIllustration() {
           className="form-control"
           value={name}
           onChange={(e) => setName(e.target.value)}
-        />
-        <label>Date:</label>
+        /><br></br>
+        <label>Date:</label><br></br>
         <input
           type="number"
           required
@@ -78,8 +80,8 @@ function AddIllustration() {
           className="form-control"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-        />
-        <label>Price:</label>
+        /><br></br>
+        <label>Price:</label><br></br>
         <input
           type="number"
           required
@@ -87,12 +89,14 @@ function AddIllustration() {
           className="form-control"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-        />
-        <input required type="file" onChange={(e) => handleFileUpload(e)} />
+        /><br></br>
+        <input required type="file" onChange={(e) => handleFileUpload(e)} /><br></br>
         {uploading ? (
           <p>Image Uploading, please wait</p>
         ) : (
-          <button type="submit">Submit</button>
+          <Link to={`/user-profile/${id}`}>
+            <button type="submit">Submit</button>
+          </Link>
         )}
       </form>
     </div>

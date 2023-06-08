@@ -75,9 +75,10 @@ function IllustrationList() {
         <div key={illustration._id}>
           <Link to={`/illustration/${illustration._id}`}>
             <img src={illustration.imageUrl} alt="illustration image" />
-            <p>{illustration.name}</p>
+            <p>
+              {illustration.name}, {illustration.date}
+            </p>
             <p>{illustration.price}€</p>
-            <p>{illustration.date}</p>
           </Link>
           <button onClick={() => handleClick(illustration._id)}>
             Add to cart
