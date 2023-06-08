@@ -48,13 +48,15 @@ function Cart() {
       {items &&
         items.map((item) => (
           <div key={item._id}>
+            <div className="remove-button">
+            <button onClick={() => removeFromCart(item._id)}>Remove</button></div>
             <img src={item.imageUrl} alt={item.name} />
             <div>
               <p>
                 {item.name}, {item.price}€
               </p>
             </div>
-            <button onClick={() => removeFromCart(item._id)}>Remove</button>
+            <button>Buy</button>
           </div>
         ))}
     </div>

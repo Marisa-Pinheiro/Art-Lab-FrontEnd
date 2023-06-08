@@ -4,9 +4,8 @@ import { AuthContext } from "../../Context/auth.context.jsx";
 
 function Favourites() {
   const [favourites, setFavourite] = useState([]);
-
   const { user } = useContext(AuthContext);
-  console.log(user);
+  
 
   const getFavourites = async () => {
     try {
@@ -24,29 +23,27 @@ function Favourites() {
     }
   };
 
-  //LACKS THE REMOVE, INSPIRED BY THE CART ONE
-
   useEffect(() => {
     getFavourites();
   }, []);
 
   return (
     <div>
-      {favourites === 0 && <p>Still no favourites?</p>}
+      {favourites.length === 0 && <p>Still no favourites?</p>}
       {favourites &&
-        favourites.map((favourite) => {
-          return (
-            <div key={favourite._id}>
-              <img src={favourite.imageUrl} />
-              <div>
-                <p>
-                  {favourite.name}, {item.date}€
-                </p>
-              </div>
+        favourites.map((fav) => (
+          <div key={item._id}>
+            <div className="remove-button">
+            <button >Remove</button></div>
+            <img src={fav.imageUrl} alt={fav.name} />
+            <div>
+              <p>
+                {fav.name}, {fav.price}€
+              </p>
             </div>
-          );
-        })}
-      <button>Remove</button> {/* not finished */}
+       
+          </div>
+        ))}
     </div>
   );
 }
