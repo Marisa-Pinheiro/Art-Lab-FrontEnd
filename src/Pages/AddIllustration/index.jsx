@@ -56,7 +56,7 @@ function AddIllustration(props) {
         setPrice(0);
         setDate(0);
         setImageUrl("");
-        navigate("/");
+        navigate(`/user-profile/${id}`);
       })
       .catch((error) => console.log(error));
   };

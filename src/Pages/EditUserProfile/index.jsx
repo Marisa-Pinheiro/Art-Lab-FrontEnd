@@ -22,7 +22,6 @@ function EditUser() {
       .then((response) => {
         const oneUser = response.data;
         setUsername(oneUser.username);
-        setPassword(oneUser.password);
       })
       .catch((error) => {
         console.log(error);
@@ -62,6 +61,7 @@ function EditUser() {
       <form onSubmit={handleFormSubmit}>
         <label>Username:</label>
         <input
+          required
           type="text"
           name="username"
           value={username}
@@ -70,6 +70,7 @@ function EditUser() {
 
         <label>Password:</label>
         <textarea
+          required
           name="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
