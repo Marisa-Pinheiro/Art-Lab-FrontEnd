@@ -1,19 +1,17 @@
 import { Link } from "react-router-dom";
-import { useContext} from "react";
+import { useContext } from "react";
 import { AuthContext } from "../../Context/auth.context";
+import Logo from "../../../public/Images/logoartlab.png";
 
 function NavBar() {
   const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
- 
 
   return (
     <nav className="navbar">
       <div className="app-logo">
         <Link to="/">
-          <img src="../../public/Images/LogoArtLab.png" alt="logo" />
+          <img src={{ Logo }} alt="logo" />
         </Link>
-       {/*  <SearchBar/> */}
-
       </div>
       <div className="nav-link">
         <Link to="/" className="home-link">

@@ -28,10 +28,11 @@ function IllustrationDetails() {
       </Link>
       {illustration && (
         <div>
-          {illustration.img}
-          <h1>{illustration.name}</h1>
-          <p>{illustration.timeOfCreation}</p>
-          <p>{illustration.timeOfCreation}</p>
+          <img src={illustration.imageUrl} alt="illustration image" />
+          <h1>{illustration.name} - {illustration.date}</h1>
+          <p>{illustration.author}</p> {/* Giving id needs name */}
+          <p>{illustration.price}€</p>
+          
         </div>
       )}
       <Link to={`/illustration/${id}/edit`}>

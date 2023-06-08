@@ -2,7 +2,9 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { AuthContext } from "../../Context/auth.context.jsx";
-import SearchBar from "../../Components/SearchBar/index.jsx";
+
+import { FaSearch } from "react-icons/fa";
+import { Divider, Input } from "antd";
 
 import projectsService from "../../../Services/project.services";
 
@@ -13,7 +15,7 @@ function IllustrationList() {
 
   const { user } = useContext(AuthContext);
 
-  /* const getSearchIllustrations = () => {
+ const handleSearch = (e) => {
     setSearchQuery(e.target.value);
 
     const filter = [];
@@ -21,38 +23,13 @@ function IllustrationList() {
         illustrations.map((illustration) => {
           if (
             illustration.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            illustration.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            /* illustration.genre.toLowerCase().includes(searchQuery.toLowerCase()) */
-     /*      ) {
+            illustration.name.toLowerCase().includes(searchQuery.toLowerCase())) {
             filter.push(illustration);
           }
         });
       setFilteredIllustration(filter);
       console.log(searchQuery)
-  };  */
-
-  /* const handleSearch = (e) => {
-    setSearchQuery(e.target.value);
-
-    const filter = [];
-
-    books.map((book) => {
-      if (
-        book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        book.genre.toLowerCase().includes(searchQuery.toLowerCase())
-      ) {
-        filter.push(book);
-      }
-    });
-
-    setBooksSearch(filter);
-    console.log(searchQuery);
-  }; */
-
-  useEffect(() => {
-    getSearchIllustrations();
-  }, [searchQuery]);
+  }; 
 
   const getAllIllustrations = () => {
     projectsService
@@ -97,30 +74,40 @@ function IllustrationList() {
 
   return (
     <div className="illustrations-list-page">
-      <SearchBar
-        illustrations={illustrations}
-        setSearchQuery={setSearchQuery}
-      />
+      <Divider>
+        <FaSearch />
+        <Input
+          type="text"
+          value={searchQuery}
+          onChange={handleSearch}
+          placeholder="Search illustrations..."
+        />
+      </Divider>
       {illustrations.length === 0 && <p>There are no illustrations yet!</p>}
-      {illustrations.map((illustration) => (
-        <div key={illustration._id}>
-          <Link to={`/illustration/${illustration._id}`}>
-            <img src={illustration.imageUrl} alt="illustration image" />
-            <p>
-              {illustration.name}, {illustration.date}
-            </p>
-            <p>{illustration.price}€</p>
-          </Link>
-          <button onClick={() => handleClick(illustration._id)}>
-            Add to cart
-          </button>
-          <button onClick={() => handleClickFavs(illustration._id)}>
-            Add to favourites
-          </button>
-        </div>
-      ))}
+      {illustrations.map((illustration) => {
+        if (
+          searchQuery.trim() === "" ||
+          illustration.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          illustration.name.toLowerCase().includes(searchQuery.toLowerCase())
+        ) {
+          return (
+            <div key={illustration._id}>
+              <Link to={`/illustration/${illustration._id}`}>
+                <img src={illustration.imageUrl} alt="Illustration Image" />
+                <p>
+                  {illustration.name}, {illustration.date}
+                </p>
+                <p>{illustration.price}€</p>
+              </Link>
+              <button onClick={() => handleClick(illustration._id)}>
+                Add to cart
+              </button>
+            </div>
+          );
+        }
+        return null; // Hide illustrations that don't match the search query
+      })}
     </div>
   );
-}
-
+    } 
 export default IllustrationList;
