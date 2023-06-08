@@ -35,7 +35,7 @@ function App() {
           <Route path="/user-profile/:id/edit" element={<IsPrivate><EditUser/></IsPrivate>}/>
           <Route path="/user-profile/:id/add-illustration/" element={<IsPrivate><AddIllustration/></IsPrivate>}/>
           <Route path="/cart" element={<IsPrivate><Cart/></IsPrivate>}/>
-          <Route path="/aboutus" element={<AboutUs/>}/>
+          <Route path="/about-us" element={<AboutUs/>}/>
         </Routes>
       </div>
       <Footer/>
