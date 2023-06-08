@@ -31,6 +31,7 @@ function Profile() {
   return (
     <div className="user-profile-page">
       <div className="header-user-profile-options">
+      {user && <h5>{user.email}</h5> }
         <Link to={`/user-profile/${id}/edit`} className="edit-profile">
           Edit your Profile
         </Link>
@@ -41,15 +42,14 @@ function Profile() {
           <p>Add Illustrations</p>
         </Link>
       </div>
-
+<div className="user-profile-body">
       {user && (
         <div>
           <div className="user-info">
-            <h1>{user.username} Illustrations List</h1>
-            <h5>{user.email}</h5>
+            <h3>Your Artworks</h3>
+            
           </div>
           <div className="user-added-artworks">
-            <h3>{user.username} Artworks</h3>
             {userIllustrations.map((illustration) => {
               return (
                 <>
@@ -60,8 +60,14 @@ function Profile() {
           </div>
         </div>
       )}
-      <div className="user-favourites">Favourites</div>
+      <div className="user-bought">
+        <h3>Artworks bought</h3>
+      </div>
+      <div className="user-favourites">
+      <h3>Favourites</h3>
       <Favourites />
+      </div>
+    </div>
     </div>
   );
 }

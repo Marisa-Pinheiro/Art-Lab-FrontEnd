@@ -1,10 +1,14 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState, useEffect , useContext} from "react";
 import { Link, useParams } from "react-router-dom";
+import { AuthContext } from "../../Context/auth.context";
+
+
 
 function IllustrationDetails() {
   const [illustration, setIllustration] = useState(null);
   const { id } = useParams();
+  const { user } = useContext(AuthContext);
 
   const getIllustration = () => {
     axios
@@ -30,14 +34,13 @@ function IllustrationDetails() {
         <div>
           <img src={illustration.imageUrl} alt="illustration image" />
           <h1>{illustration.name} - {illustration.date}</h1>
-          <p>{illustration.author}</p> {/* Giving id needs name */}
+          <p>{illustration.author}</p>
           <p>{illustration.price}€</p>
           
         </div>
       )}
-      <Link to={`/illustration/${id}/edit`}>
-        <button>Edit Illustration</button>
-      </Link>
+      {illustration && illustration.author === user._id &&
+      <Link to={`/illustration/${id}/edit`}><button>Edit Illustration</button></Link>}
 
     </div>
   );

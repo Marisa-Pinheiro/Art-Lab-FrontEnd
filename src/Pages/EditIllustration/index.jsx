@@ -57,6 +57,7 @@ function EditIllustration() {
       <Link to={`/illustration/${id}`}>
         Back
       </Link>
+      
       <h3>Edit your illustration!</h3>
       <form onSubmit={handleFormSubmit}>
         <label>Name:</label><br></br>

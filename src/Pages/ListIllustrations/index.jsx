@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import { AuthContext } from "../../Context/auth.context.jsx";
+import { AuthContext } from "../../Context/auth.context";
 
 import { FaSearch } from "react-icons/fa";
 import { Divider, Input } from "antd";

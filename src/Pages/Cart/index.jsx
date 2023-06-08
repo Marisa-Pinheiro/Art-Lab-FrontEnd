@@ -49,7 +49,7 @@ function Cart() {
         items.map((item) => (
           <div key={item._id}>
             <div className="remove-button">
-            <button onClick={() => removeFromCart(item._id)}>Remove</button></div>
+            <button onClick={() => removeFromCart(item._id)}>&#x2715;</button></div>
             <img src={item.imageUrl} alt={item.name} />
             <div>
               <p>

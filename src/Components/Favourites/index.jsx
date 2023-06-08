@@ -1,6 +1,8 @@
 import { useEffect, useContext, useState } from "react";
 import axios from "axios";
-import { AuthContext } from "../../Context/auth.context.jsx";
+import { AuthContext } from "../../Context/auth.context";
+
+
 
 function Favourites() {
   const [favourites, setFavourite] = useState([]);
