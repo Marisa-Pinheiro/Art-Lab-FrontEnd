@@ -5,9 +5,7 @@ import { AuthContext } from "../../Context/auth.context.jsx";
 
 function Cart() {
   const [items, setItems] = useState([]);
-
   const { user } = useContext(AuthContext);
-  console.log(user);
 
   const getCartItems = async () => {
     try {
@@ -29,17 +27,15 @@ function Cart() {
     getCartItems();
   }, []);
 
-  //NOT FINISHED
   const removeFromCart = (itemId) => {
     axios
       .put(
-        `${import.meta.env.VITE_APP_SERVER_URL}/api/${
-          user._id
-        }/cart/del/${itemId}`
+        `${import.meta.env.VITE_APP_SERVER_URL}/api/${user._id}/cart/del/${itemId}`
       )
       .then((response) => {
-        setItems(items.filter((item) => item._id !== itemId));
-        navigate(`/cart`);
+        setItems((prevItems) =>
+          prevItems.filter((item) => item._id !== itemId)
+        );
       })
       .catch((error) => {
         console.log(error);
@@ -48,23 +44,21 @@ function Cart() {
 
   return (
     <div>
-      {items === 0 && <p>Your cart is empty</p>}
+      {items.length === 0 && <p>Your cart is empty</p>}
       {items &&
-        items.map((item) => {
-          return (
-            <div key={item._id}>
-              <img src={item.imageUrl} />
-              <div>
-                <p>
-                  {item.name}, {item.price}€
-                </p>
-              </div>
+        items.map((item) => (
+          <div key={item._id}>
+            <img src={item.imageUrl} alt={item.name} />
+            <div>
+              <p>
+                {item.name}, {item.price}€
+              </p>
             </div>
-          );
-        })}
-      <button onClick={() => removeFromCart(item._id)}>Remove</button>
+            <button onClick={() => removeFromCart(item._id)}>Remove</button>
+          </div>
+        ))}
     </div>
   );
 }
 
-export default Cart;
+export default Cart

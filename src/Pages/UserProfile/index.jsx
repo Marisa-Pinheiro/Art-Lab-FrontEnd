@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
-import Favourites from "../../Components/Favourites";
+import Favourites from "../../Components/Favourites/index";
 
 function Profile() {
   const [user, setUser] = useState(null);

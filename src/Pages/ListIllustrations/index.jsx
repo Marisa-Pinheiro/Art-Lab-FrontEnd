@@ -102,6 +102,9 @@ function IllustrationList() {
               <button onClick={() => handleClick(illustration._id)}>
                 Add to cart
               </button>
+              <button onClick={() => handleClickFavs(illustration._id)}>
+              ♥
+              </button>
             </div>
           );
         }

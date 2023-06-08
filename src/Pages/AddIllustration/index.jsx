@@ -63,7 +63,8 @@ function AddIllustration() {
       <Link to={`/user-profile/${id}`}>Back</Link>
       <h3>Add Artwork</h3>
       <form onSubmit={handleSubmit}>
-        <label>Name:</label><br></br>
+        <label>Name:</label>
+        <br></br>
         <input
           type="text"
           required
@@ -71,8 +72,10 @@ function AddIllustration() {
           className="form-control"
           value={name}
           onChange={(e) => setName(e.target.value)}
-        /><br></br>
-        <label>Date:</label><br></br>
+        />
+        <br></br>
+        <label>Date:</label>
+        <br></br>
         <input
           type="number"
           required
@@ -80,8 +83,10 @@ function AddIllustration() {
           className="form-control"
           value={date}
           onChange={(e) => setDate(e.target.value)}
-        /><br></br>
-        <label>Price:</label><br></br>
+        />
+        <br></br>
+        <label>Price:</label>
+        <br></br>
         <input
           type="number"
           required
@@ -89,14 +94,16 @@ function AddIllustration() {
           className="form-control"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
-        /><br></br>
-        <input required type="file" onChange={(e) => handleFileUpload(e)} /><br></br>
+        />
+        <br></br>
+        <input required type="file" onChange={(e) => handleFileUpload(e)} />
+        <br></br>
         {uploading ? (
           <p>Image Uploading, please wait</p>
         ) : (
-          <Link to={`/user-profile/${id}`}>
-            <button type="submit">Submit</button>
-          </Link>
+          /*           <Link to={`/user-profile/${id}`}> */
+          <button type="submit">Submit</button>
+          /*           </Link> */
         )}
       </form>
     </div>
