@@ -9,29 +9,49 @@ import projectsService from "../../../Services/project.services";
 function IllustrationList() {
   const [illustrations, setIllustrations] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredIllustration, setFilteredIllustration] = useState("");
+  const [filteredIllustration, setFilteredIllustration] = useState([]);
 
   const { user } = useContext(AuthContext);
 
-  const getSearchIllustrations = () => {
-    if (searchQuery !== "") {
-      const result = [];
+  /* const getSearchIllustrations = () => {
+    setSearchQuery(e.target.value);
+
+    const filter = [];
 
       for (let i = 0; i < illustrations.length; i++) {
-        if (
-          illustrations[i].name
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase())
-        ) {
-          result.push(illustrations[i]);
-        }
-      }
-
+        illustrations.map((illustration) => {
+          if (
+            illustration.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            illustration.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            /* illustration.genre.toLowerCase().includes(searchQuery.toLowerCase()) */
+          ) {
+            filter.push(book);
+          }
+        });
       setFilteredIllustration(filteredIllustration);
     } else if (searchQuery === "") {
       getAllIllustrations();
     }
-  };
+  }; */
+
+  /* const handleSearch = (e) => {
+    setSearchQuery(e.target.value);
+
+    const filter = [];
+
+    books.map((book) => {
+      if (
+        book.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        book.author.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        book.genre.toLowerCase().includes(searchQuery.toLowerCase())
+      ) {
+        filter.push(book);
+      }
+    });
+
+    setBooksSearch(filter);
+    console.log(searchQuery);
+  }; */
 
   useEffect(() => {
     getSearchIllustrations();
