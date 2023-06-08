@@ -25,14 +25,23 @@ function IllustrationDetails() {
 
   return (
     <div className="illustration-details">
-      <Link to="/illustration">Back</Link>
+      <Link  to="/illustration"><p style={{display:"flex", justifyContent:"left"}}>&#8617;</p></Link>
       {illustration && (
-        <div>
-          <img src={illustration.imageUrl} alt="illustration image" />
-          <h1>
+        <div >
+          <img
+            style={{
+              width: "max-content",
+              height: 450,
+              borderWidth: 0.3,
+              borderStyle: "solid",
+              borderBlockColor: "black",
+            }}
+            src={illustration.imageUrl}
+            alt="illustration image"
+          />
+          <h3 >
             {illustration.name} - {illustration.date}
-          </h1>
-          <p>{illustration.author}</p>
+          </h3>
           <p>{illustration.price}€</p>
         </div>
       )}

@@ -83,6 +83,8 @@ function IllustrationList() {
           marginBottom: 10,
           marginTop: 10,
           alignItems: "center",
+          width: 1100,
+          marginLeft: 40
         }}
       >
         <FaSearch />
@@ -94,52 +96,60 @@ function IllustrationList() {
           placeholder="Search illustrations..."
         />
       </div>
-      <div className="illustration-list" style={{}}>
-      {illustrations.length === 0 && <p>There are no illustrations yet!</p>}
-      {illustrations.map((illustration) => {
-        if (
-          searchQuery.trim() === "" ||
-          illustration.author
-            .toLowerCase()
-            .includes(searchQuery.toLowerCase()) ||
-          illustration.name.toLowerCase().includes(searchQuery.toLowerCase())
-        ) {
-          return (
-            <div key={illustration._id} style={{borderWidth: 1,
-              borderStyle: "solid",
-              borderBlockColor: "black",
-              padding: 10,
-              display:"flex",
-              flexDirection:"column",
-              margin:5}}>
-              <Link to={`/illustration/${illustration._id}`}>
-                <img
-                  style={{
-                    width: "max-content",
-                    height: 500,
-                    borderWidth: 1,
-                    borderStyle: "solid",
-                    borderBlockColor: "black",
-                  }}
-                  src={illustration.imageUrl}
-                  alt="Illustration Image"
-                />
-                <p>
-                  {illustration.name}, {illustration.date}
-                </p>
-                <p>{illustration.price}€</p>
-              </Link>
-              <button onClick={() => handleClick(illustration._id)}>
-                Add to cart
-              </button>
-              <button onClick={() => handleClickFavs(illustration._id)}>
-                ♥
-              </button>
-            </div>
-          );
-        }
-        return null; // Hide illustrations that don't match the search query
-      })}
+      <div
+        className="illustration-list"
+        style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent:"center" ,lineHeight: 0.2}}
+      >
+        {illustrations.length === 0 && <p>There are no illustrations yet!</p>}
+        {illustrations.map((illustration) => {
+          if (
+            searchQuery.trim() === "" ||
+            illustration.author
+              .toLowerCase()
+              .includes(searchQuery.toLowerCase()) ||
+            illustration.name.toLowerCase().includes(searchQuery.toLowerCase())
+          ) {
+            return (
+              <div
+                key={illustration._id}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  margin: 5,
+                }}
+              >
+                <Link to={`/illustration/${illustration._id}`}>
+                  <img
+                    style={{
+                      width: "max-content",
+                      height: 500,
+                      borderWidth: 1,
+                      borderStyle: "solid",
+                      borderBlockColor: "black",
+                    }}
+                    src={illustration.imageUrl}
+                    alt="Illustration Image"
+                  />
+                  
+                  <div className="list-text-info" style={{fontSize: 12, lineHeight: 0.2, paddingBottom:10, textAlign: "left"}}>
+                  <p>
+                    {illustration.name}, {illustration.date}
+                  </p>
+                  <p>{illustration.price}€</p></div>
+                </Link>
+                <div className="buttons-illustrations-list">
+                <button className="button add"  onClick={() => handleClick(illustration._id)}>
+                  Add to cart
+                </button>
+                <button className="button" onClick={() => handleClickFavs(illustration._id)}>
+                  ♥
+                </button>
+                </div>
+              </div>
+            );
+          }
+          return null; // Hide illustrations that don't match the search query
+        })}
       </div>
     </div>
   );
