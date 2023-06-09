@@ -63,14 +63,14 @@ function Profile() {
             </div>
           </div>
         )}
-        <div className="user-bought">
-          <h3>Artworks bought</h3>
+        <h3>Artworks bought</h3>
+        <section className="user-profile-section">
           <BoughtList />
-        </div>
-        <div className="user-favourites">
-          <h3>Favourites</h3>
+        </section>
+        <h3>Favourites</h3>
+        <section className="user-profile-section">
           <Favourites />
-        </div>
+        </section>
       </div>
     </div>
   );

@@ -250,13 +250,24 @@ body{
   }
 
   .profile-card {
+    background-color: white;
     width: 10%;
     margin: 10px;
+  }
+
+  .profile-card p {
+    margin: 5px;
+  }
+
+  .profile-card a:hover {
+    cursor: pointer;
   }
 
   .profile-card-img {
     width: 100%;
   }
+
+  
 }
 
 /* MOBILE */
