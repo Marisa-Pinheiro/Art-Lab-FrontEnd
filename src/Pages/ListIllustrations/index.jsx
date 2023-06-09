@@ -75,31 +75,14 @@ function IllustrationList() {
 
   return (
     <div className="illustrations-list-page">
-      <div
-        className="search"
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          marginBottom: 10,
-          marginTop: 10,
-          alignItems: "center",
-          width: 1100,
-          marginLeft: 40
-        }}
-      >
-        <FaSearch />
-        <Input
-          type="text"
-          value={searchQuery}
-          onChange={handleSearch}
-          style={{ marginLeft: 10 }}
-          placeholder="Search illustrations..."
-        />
+      <div className="search-section">
+        <div className="search">
+          <FaSearch />
+          <Input type="text" value={searchQuery} onChange={handleSearch} className="search-field" 
+          placeholder="Search illustrations..."/>
+        </div>
       </div>
-      <div
-        className="illustration-list"
-        style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", justifyContent:"center" ,lineHeight: 0.2}}
-      >
+      <div className="illustration-list">
         {illustrations.length === 0 && <p>There are no illustrations yet!</p>}
         {illustrations.map((illustration) => {
           if (
@@ -110,40 +93,20 @@ function IllustrationList() {
             illustration.name.toLowerCase().includes(searchQuery.toLowerCase())
           ) {
             return (
-              <div
-                key={illustration._id}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  margin: 5,
-                }}
-              >
+              <div key={illustration._id} className="illustration-card">
                 <Link to={`/illustration/${illustration._id}`}>
-                  <img
-                    style={{
-                      width: "max-content",
-                      height: 500,
-                      borderWidth: 1,
-                      borderStyle: "solid",
-                      borderBlockColor: "black",
-                    }}
-                    src={illustration.imageUrl}
-                    alt="Illustration Image"
-                  />
-                  
-                  <div className="list-text-info" style={{fontSize: 12, lineHeight: 0.2, paddingBottom:10, textAlign: "left"}}>
-                  <p>
-                    {illustration.name}, {illustration.date}
-                  </p>
-                  <p>{illustration.price}€</p></div>
+                  <img className="illustration-card-img" src={illustration.imageUrl} alt="Illustration Image"/>
+                  <div className="illustration-card-text">
+                  <p>{illustration.date} | {illustration.name} | {illustration.price}€</p>
+                  </div>
                 </Link>
-                <div className="buttons-illustrations-list">
-                <button className="button add"  onClick={() => handleClick(illustration._id)}>
-                  Add to cart
-                </button>
-                <button className="button" onClick={() => handleClickFavs(illustration._id)}>
-                  ♥
-                </button>
+                <div className="illustration-card-links">
+                <a onClick={() => handleClick(illustration._id)}>
+                  🛒
+                </a>
+                <a onClick={() => handleClickFavs(illustration._id)}>
+                  💗
+                </a>
                 </div>
               </div>
             );

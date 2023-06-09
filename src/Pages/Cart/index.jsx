@@ -57,21 +57,19 @@ function Cart() {
   };
 
   return (
-    <div>
+    <div className="illustration-list">
       {items.length === 0 && <p>Your cart is empty</p>}
       {items &&
         items.map((item) => (
-          <div key={item._id}>
-            <div className="remove-button">
-              <button onClick={() => removeFromCart(item._id)}>&#x2715;</button>
-            </div>
+          <div key={item._id} className="illustration-card">
             <img src={item.imageUrl} alt={item.name} />
-            <div>
-              <p>
-                {item.name}, {item.price}€
-              </p>
+            <div className="illustration-card-text blacktext">
+              <p>{item.name} {item.price}€</p>
             </div>
-            <button onClick={() => handleClick(item._id)}>Buy</button>
+            <div className="illustration-card-links">
+              <a onClick={() => removeFromCart(item._id)}>remove</a>
+              <a onClick={() => handleClick(item._id)}>buy</a>
+            </div>
           </div>
         ))}
     </div>

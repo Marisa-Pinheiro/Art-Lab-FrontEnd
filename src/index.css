@@ -67,6 +67,7 @@ body{
     color: #d68f08;
   }
 
+
   /* Footer */
   .footer {  
     border-top: 1px solid gray;
@@ -91,11 +92,101 @@ body{
     color: #d68f08;
   }
 
-  /* Home page */
+
+  /* Home Page */
   video {
     width:100%;
   }
 
+
+  /* Illustrations*/
+  .search-section {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    width: 100%;
+  }
+
+  .search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .search-field {
+    margin-left: 1rem;
+    width: 20%;
+    border-radius: 50px;
+  }
+
+  .illustration-list {
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    line-height: 0.6;
+  }
+
+  .illustration-list a{
+    text-decoration: none;
+    color: black;
+  }
+
+  .illustration-list a:hover {
+    color: rgb(231, 89, 37);
+  }
+
+  .illustration-card {
+    width: 360px;
+    height: 570px;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid rgba(0, 0, 0, 0);
+
+    background-color: rgb(255, 255, 255);
+
+    margin: 15px;
+  }
+
+  .illustration-card:hover {
+    border: 1px solid black;
+  }
+
+  .illustration-card-img {
+    width: 100%;
+    height: 500px;
+  }
+
+  .illustration-card-text {
+    font-size: 15px;
+    text-align: center;
+  }
+
+  .illustration-card-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-size: 1.3rem;
+  }
+
+  .illustration-card-links a {
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .illustration-card-links a:hover {
+    font-size: 1.4rem;
+  }
+
+  .blacktext {
+    color: black;
+  }
+
+
+
+  /* About Page*/
   .about-section {
     height: 120%;
     margin-bottom: 8%;
@@ -120,36 +211,6 @@ body{
 
   .about-section-cards a:hover {
     color: rgb(231, 89, 37);
-  }
-
-  .illustration-list a{
-    text-decoration: none;
-    color: black;
-  }
-
-  .illustration-list a:hover {
-    color: rgb(231, 89, 37);
-  }
-
-  .buttons-illustrations-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    margin-bottom: 4%;
-    background-color: transparent;
-    border-style: none;
-  }
-
-  .buttons-illustrations-list .button{
-    background-color: transparent;
-    border-style: none;
-  }
-
-  .buttons-illustrations-list .button:hover {
-    background-color: rgb(231, 89, 37);
-    border-style: none;
-    color: white;
-    border-radius: 25px;
   }
 }
 
