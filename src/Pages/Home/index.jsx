@@ -1,10 +1,9 @@
 function HomePage() {
     return (
-      <div>
-        <h1>Home Page</h1>
-        <p> Something will be here someday</p>
-      </div>
+      <video id="background-video" autoPlay loop muted>
+        <source src="/videos/background.mp4" type="video/mp4"/>
+      </video>
     );
-  }
+ }
   
-  export default HomePage;
+export default HomePage;

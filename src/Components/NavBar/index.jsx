@@ -23,9 +23,7 @@ function NavBar() {
 
       {isLoggedIn ? (
         <div className="loggedIn">
-          <button className="logout" onClick={logOutUser}>
-            Logout
-          </button>
+          <button className="navbar-button" onClick={logOutUser}>Logout</button>
           {user && (
             <Link to={`/user-profile/${user._id}`} className="nav_link">
               User
@@ -38,10 +36,10 @@ function NavBar() {
       ) : (
         <div className="loggedOut">
           <Link to="/signup">
-            <button className="signup">Signup</button>
+            <button className="navbar-button">Signup</button>
           </Link>
           <Link to="/login">
-            <button className="loging">Login</button>
+            <button className="navbar-button">Login</button>
           </Link>
         </div>
       )}

@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div className="footer">
-      <div className="nav-link">
+        <img className="footer-logo" src="/Images/logoartlab-W.png" alt="white-logo"/>
         <Link to="/about-us">
           About us 
-        </Link> <Link to="/terms" >
+        </Link>
+        <Link to="/terms" >
            Terms of service
         </Link>
-      </div>
     </div>
   );
 }
