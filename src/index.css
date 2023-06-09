@@ -267,7 +267,49 @@ body{
   .profile-card-img {
     width: 100%;
   }
+
+  /* Sign up & Log in */
+.signup-page, .LoginPage, .edit-user, .add-illustration{
+  margin-top: 5%;
 }
+.signup-page h1, .LoginPage h1,.edit-user h3, .add-illustration h3{
+  font-weight: 100; 
+  text-align:"center";
+   font-size: 2vw ;
+
+}
+.label{
+  font-weight: 100;
+  text-align: center;
+  font-size: 1vw;
+}
+
+  .signup:hover {
+    color: rgb(231, 89, 37);
+  }
+
+  .signup-button,.login-button,.signup-submit{
+    border-radius: 25px;
+    border-style: none;
+    color:black;
+    padding: 3px;
+    margin-top: 1%;
+  }
+
+  .signup-button:hover, .login-button:hover, .signup-submit:hover{
+    background-color: rgb(231, 89, 37);
+    color:#f2f2f2;
+  }
+
+  .signup{
+    text-decoration: none;
+    color: black;
+    font-size: small;
+  }
+
+  .have-account{
+    font-size: 1vw;
+  }
 
 /* MOBILE */
 

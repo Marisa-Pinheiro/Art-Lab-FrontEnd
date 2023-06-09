@@ -58,11 +58,11 @@ function EditUser() {
   };
 
   return (
-    <div>
-      <Link to={`/user-profile/${id}`}>Back</Link>
+    <div className="edit-user">
+      <Link to={`/user-profile/${id}`} className="signup">Back</Link>
       <h3>Edit your profile</h3>
       <form onSubmit={handleFormSubmit}>
-        <label>Username:</label><br></br>
+        <label className="label">Username:</label><br></br>
         <input
           required
           type="text"
@@ -71,7 +71,7 @@ function EditUser() {
           onChange={(e) => setUsername(e.target.value)}
         /><br></br>
 
-        <label>Password:</label><br></br>
+        <label className="label">Password:</label><br></br>
         <textarea
           required
           name="password"
@@ -80,12 +80,12 @@ function EditUser() {
         /><br></br>
 
         <Link to={`/user-profile/${id}`}>
-          <button type="submit">Edit</button>
+          <button type="submit" className="signup-submit">Edit</button>
         </Link>
       </form>
 
       <Link to={`/`}>
-        <button onClick={deleteUser}>Delete your profile?</button>
+        <button onClick={deleteUser} className="signup-submit">Delete your profile?</button>
       </Link>
     </div>
   );

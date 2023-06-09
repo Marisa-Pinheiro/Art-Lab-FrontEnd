@@ -47,9 +47,11 @@ function IllustrationDetails() {
       )}
       {illustration && illustration.author === user._id && (
         <Link to={`/illustration/${id}/edit`}>
-          <button>Edit Illustration</button>
+          <button className="signup-submit">Edit Illustration</button>
         </Link>
       )}
+      <br></br>
+      <br></br>
     </div>
   );
 }

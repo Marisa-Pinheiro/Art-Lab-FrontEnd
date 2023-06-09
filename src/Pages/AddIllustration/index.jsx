@@ -60,10 +60,10 @@ function AddIllustration() {
 
   return (
     <div className="add-illustration">
-      <Link to={`/user-profile/${id}`}>Back</Link>
+      <Link to={`/user-profile/${id}`} className="signup">Back</Link>
       <h3>Add Artwork</h3>
       <form onSubmit={handleSubmit}>
-        <label>Name:</label>
+        <label className="label">Name:</label>
         <br></br>
         <input
           type="text"
@@ -74,7 +74,7 @@ function AddIllustration() {
           onChange={(e) => setName(e.target.value)}
         />
         <br></br>
-        <label>Date:</label>
+        <label className="label">Date:</label>
         <br></br>
         <input
           type="number"
@@ -85,7 +85,7 @@ function AddIllustration() {
           onChange={(e) => setDate(e.target.value)}
         />
         <br></br>
-        <label>Price:</label>
+        <label className="label">Price:</label>
         <br></br>
         <input
           type="number"
@@ -102,7 +102,7 @@ function AddIllustration() {
           <p>Image Uploading, please wait</p>
         ) : (
           /*           <Link to={`/user-profile/${id}`}> */
-          <button type="submit">Submit</button>
+          <button type="submit" className="signup-submit">Submit</button>
           /*           </Link> */
         )}
       </form>

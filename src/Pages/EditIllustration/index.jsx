@@ -53,14 +53,14 @@ function EditIllustration() {
   };
 
   return (
-    <div>
-      <Link to={`/illustration/${id}`}>
+    <div className="edit-user">
+      <Link to={`/illustration/${id}`} className="signup">
         Back
       </Link>
       
-      <h3>Edit your illustration!</h3>
+      <h3 >Edit your illustration!</h3>
       <form onSubmit={handleFormSubmit}>
-        <label>Name:</label><br></br>
+        <label className="label">Name:</label><br></br>
         <input
           type="text"
           name="name"
@@ -68,24 +68,24 @@ function EditIllustration() {
           onChange={(e) => setName(e.target.value)}
         /><br></br>
 
-        <label>Price</label><br></br>
+        <label className="label">Price</label><br></br>
         <input
           type="number"
           name="price"
           value={price}
           onChange={(e) => setPrice(e.target.value)}
         /><br></br>
-        <label>Date</label><br></br>
+        <label className="label">Date</label><br></br>
         <input
           type="number"
           name="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
         /><br></br>
-        <Link to={`/illustration/${id}`}><button type="submit" onClick={handleFormSubmit}>Edit</button></Link>
+        <Link to={`/illustration/${id}`} ><button className="signup-submit"type="submit" onClick={handleFormSubmit}>Edit</button></Link>
       </form>
       <Link to={`/illustration`}>
-  <button onClick={deleteIllustration}>Delete your illustration?</button>
+  <button onClick={deleteIllustration} className="signup-submit">Delete your illustration?</button>
 </Link>
 
     </div>

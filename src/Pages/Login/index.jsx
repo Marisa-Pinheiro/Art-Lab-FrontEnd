@@ -89,11 +89,11 @@ function LogInPage() {
       <h1>Login</h1>
 
       <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
+        <label className="label">Email:</label>
         <br></br>
         <input type="email" name="email" value={email} onChange={handleEmail} />
         <br></br>
-        <label>Password:</label>
+        <label className="label">Password:</label>
         <br></br>
         <input
           type="password"
@@ -102,7 +102,9 @@ function LogInPage() {
           onChange={handlePassword}
         />
         <br></br>
-        <button type="submit">Login</button>
+        <button type="submit" className="login-button">
+          Login
+        </button>
       </form>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
@@ -113,8 +115,11 @@ function LogInPage() {
       {user ? <p>You are logged in </p> : <p>You are logged out</p>} */}
       {/* Firebase */}
 
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+      <p className="have-account">Don't have an account yet?</p>
+      <Link to={"/signup"} className="signup">
+        {" "}
+        Sign Up
+      </Link>
     </div>
   );
 }
