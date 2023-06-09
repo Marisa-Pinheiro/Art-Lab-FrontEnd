@@ -49,7 +49,8 @@ function Favourites() {
         favourites.map((fav) => (
           <div key={fav._id}>
             <div className="remove-button">
-              <button onClick={() => removeFavourite(fav._id)}>Remove</button>
+              <button onClick={() => removeFavourite(fav._id)}>
+              Remove</button>
             </div>
             <img src={fav.imageUrl} alt={fav.name} />
             <div>

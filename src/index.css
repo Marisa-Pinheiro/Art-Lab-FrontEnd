@@ -3,7 +3,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: white;
+  color: rgb(51, 51, 51);
   background-color: white;
 
   font-synthesis: none;
@@ -180,10 +180,6 @@ body{
     font-size: 1.4rem;
   }
 
-  .blacktext {
-    color: black;
-  }
-
 
   /* About Page*/
   .about-section {
@@ -240,6 +236,26 @@ body{
 
   .user-profile-info {
     width: 90%;
+
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .user-profile-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .profile-card {
+    width: 10%;
+    margin: 10px;
+  }
+
+  .profile-card-img {
+    width: 100%;
   }
 }
 

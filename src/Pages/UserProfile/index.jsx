@@ -50,16 +50,16 @@ function Profile() {
         {user && (
           <div>
             <div className="user-info">
-              <h3>Your Artworks</h3>
-            </div>
-            <div>
+            <h3>Your Artworks</h3>
+            <section className="user-profile-section">
               {userIllustrations.map((illustration) => {
                 return (
-                  <div>
-                    <img className="illustration-card-img" src={illustration.imageUrl} alt="illustration image" />
+                  <div className="profile-card">
+                    <img className="profile-card-img" src={illustration.imageUrl} alt="illustration image" />
                   </div>
                 );
               })}
+            </section>
             </div>
           </div>
         )}

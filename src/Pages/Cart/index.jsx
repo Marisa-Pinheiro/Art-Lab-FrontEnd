@@ -63,7 +63,7 @@ function Cart() {
         items.map((item) => (
           <div key={item._id} className="illustration-card">
             <img src={item.imageUrl} alt={item.name} />
-            <div className="illustration-card-text blacktext">
+            <div className="illustration-card-text">
               <p>{item.name} {item.price}€</p>
             </div>
             <div className="illustration-card-links">
