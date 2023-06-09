@@ -26,7 +26,7 @@ function Cart() {
 
   const handleClick = (itemId) => {
     axios
-      .put(`${import.meta.env.VITE_APP_SERVER_URL}/api/${user._id}/paid`)
+      .put(`${import.meta.env.VITE_APP_SERVER_URL}/api/${user._id}/paid/${itemId}`)
       .then(function (response) {
         setBought(response);
       })
