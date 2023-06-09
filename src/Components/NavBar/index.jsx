@@ -17,7 +17,7 @@ function NavBar() {
         <>
           {user && (
             <Link to={`/user-profile/${user._id}`} className="nav-link">
-              User
+              Profile
             </Link>
           )}
             <Link to={"/cart"} className="nav-link">

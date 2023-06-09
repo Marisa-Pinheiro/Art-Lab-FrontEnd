@@ -30,31 +30,34 @@ function Profile() {
   }, [id]);
 
   return (
-    <div className="user-profile-page">
-      <div className="header-user-profile-options">
-        {user && <h5>{user.email}</h5>}
-        <Link to={`/user-profile/${id}/edit`} className="edit-profile">
-          Edit your Profile
+    <div className="user-profile">
+      <div className="user-profile-bar">
+        <img className="user-img" src="https://img.freepik.com/premium-vector/man-avatar-profile-picture-vector-illustration_268834-538.jpg" alt="user pic" />
+        <hr/>
+        {user && <h3>{user.username}</h3>}
+        {user && <p>{user.email}</p>}
+        <hr/>
+        <Link to={`/user-profile/${id}/edit`} className="nav-link">
+          Edit Profile
         </Link>
-        <Link
-          to={`/user-profile/${id}/add-illustration/`}
-          className="illustration-link"
-        >
-          <p>Add Illustrations</p>
+        <hr/>
+        <Link to={`/user-profile/${id}/add-illustration/`} className="nav-link">
+          Add Illustrations
         </Link>
+        <hr/>
       </div>
-      <div className="user-profile-body">
+      <div className="user-profile-info">
         {user && (
           <div>
             <div className="user-info">
               <h3>Your Artworks</h3>
             </div>
-            <div className="user-added-artworks">
+            <div>
               {userIllustrations.map((illustration) => {
                 return (
-                  <>
-                    <img src={illustration.imageUrl} alt="illustration image" />
-                  </>
+                  <div>
+                    <img className="illustration-card-img" src={illustration.imageUrl} alt="illustration image" />
+                  </div>
                 );
               })}
             </div>

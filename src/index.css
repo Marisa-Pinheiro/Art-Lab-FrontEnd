@@ -185,7 +185,6 @@ body{
   }
 
 
-
   /* About Page*/
   .about-section {
     height: 120%;
@@ -211,6 +210,36 @@ body{
 
   .about-section-cards a:hover {
     color: rgb(231, 89, 37);
+  }
+
+
+  /* Profile Page*/
+  .user-profile {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .user-profile-bar {
+    width: 10%;
+    
+    background-color: white;
+    color:black;
+
+    border-right: 1px solid black;
+  }
+
+  .user-img {
+    width: 100%;
+  }
+
+  .user-profile-bar a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .user-profile-info {
+    width: 90%;
   }
 }
 
