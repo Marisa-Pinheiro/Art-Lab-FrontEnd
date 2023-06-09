@@ -7,41 +7,36 @@ function NavBar() {
 
   return (
     <nav className="navbar">
-      <div className="app-logo">
-        <Link to="/">
-          <img src="/Images/logoartlab.png" alt="logo" />
-        </Link>
-      </div>
-      <div className="nav-link">
-        <Link to="/" className="home-link">
-          Home
-        </Link>
-        <Link to="/illustration" className="illustration-link">
-          Illustrations
-        </Link>
-      </div>
-
+      <Link to="/">
+        <img src="/Images/logoartlab.png" alt="logo" className="nav-logo"/>
+      </Link>
+      <Link to="/" className="nav-link">
+        Home
+      </Link>
       {isLoggedIn ? (
-        <div className="loggedIn">
-          <button className="navbar-button" onClick={logOutUser}>Logout</button>
+        <>
           {user && (
-            <Link to={`/user-profile/${user._id}`} className="nav_link">
+            <Link to={`/user-profile/${user._id}`} className="nav-link">
               User
             </Link>
           )}
-          <Link to={"/cart"} className="nav_link">
-            Cart
-          </Link>
-        </div>
+            <Link to={"/cart"} className="nav-link">
+              Cart
+            </Link>
+            <Link to="/illustration" className="nav-link">
+              Illustrations
+            </Link>
+            <a onClick={logOutUser} className="nav-link" >Logout</a>
+        </>
       ) : (
-        <div className="loggedOut">
-          <Link to="/signup">
-            <button className="navbar-button">Signup</button>
+        <>
+          <Link to="/signup" className="nav-link">
+            Signup
           </Link>
-          <Link to="/login">
-            <button className="navbar-button">Login</button>
+          <Link to="/login" className="nav-link">
+            Login
           </Link>
-        </div>
+        </>
       )}
     </nav>
   );
