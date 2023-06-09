@@ -247,6 +247,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    width: 100%;
   }
 
   .profile-card {
@@ -266,8 +267,6 @@ body{
   .profile-card-img {
     width: 100%;
   }
-
-  
 }
 
 /* MOBILE */

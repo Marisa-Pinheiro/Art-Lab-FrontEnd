@@ -27,29 +27,20 @@ function BoughtList() {
   }, []);
 
   return (
-    <div>
+    <>
       {bought ? (
         bought.map((bg) => (
-          <div key={bg._id}>
-            <img
-              src={bg.imageUrl}
-              alt={bg.name}
-              style={{
-                width: 200,
-                height: 100,
-              }}
-            />
-            <div>
-              <p>
-                {bg.name}, {bg.price}€
-              </p>
+          <>
+            <div className="profile-card">
+              <p> {bg.name} | {bg.date}</p>
+              <img className="profile-card-img" src={bg.imageUrl} alt={bg.name}/>
             </div>
-          </div>
+          </>
         ))
       ) : (
         <p>Nothing bought yet!</p>
       )}
-    </div>
+    </>
   );
 }
 

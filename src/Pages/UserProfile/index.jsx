@@ -63,7 +63,7 @@ function Profile() {
             </div>
           </div>
         )}
-        <h3>Artworks bought</h3>
+        <h3>Bought</h3>
         <section className="user-profile-section">
           <BoughtList />
         </section>
